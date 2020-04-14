@@ -9,6 +9,7 @@ class HomePageTest(TestCase):
         self.assertTemplateUsed(response, 'base.html')
 
 class SignUpTest(TestCase):
+    #การทดสอบว่าผู้ใช้งานสามารถสมัครสมาชิกได้
     def test_user_signup(self):
         self.example_user = User.objects.create_user(username='Panachai', password='mypasswordisveryeasy',
                                                      email='panachai@test.com')
@@ -97,4 +98,3 @@ class GradeCalTest(TestCase):
         self.assertEqual(example_saved_user.gpa.first().GPA_7, '1')
         self.assertEqual(example_saved_user.gpa.first().GPA_8, '0.5')
 
-    # def test_can_calculate_GPA(self):
