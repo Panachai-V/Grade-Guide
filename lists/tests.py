@@ -54,6 +54,7 @@ class GradeCalTest(TestCase):
         self.assertEqual(example_saved_user.term1.first().unit, '1')
         self.assertEqual(example_saved_user.term1.first().Grade, 'A')
 
+    # การทดสอบว่าหน้า grade calculator สามารถบันทึกข้อมูลทุกเทอมได้
     def test_gradeCal_can_save_all_term_data(self):
         example_user = Userinfo.objects.create(name='example_user ')
         example_data1 = Term1.objects.create(subject='example_subject1', unit='1', Grade='A')
