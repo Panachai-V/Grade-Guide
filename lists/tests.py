@@ -3,13 +3,13 @@ from django.contrib.auth.models import User
 from lists.models import Userinfo,Term1,Term2,Term3,Term4,Term5,Term6,Term7,Term8,GPA
 
 class HomePageTest(TestCase):
-    #การทดสอบว่าหน้า template ที่เรียกใช้ยังคงเป็นหน้า base.html อยู่
+    # การทดสอบว่าหน้า template ที่เรียกใช้ยังคงเป็นหน้า base.html อยู่
     def test_uses_home_template(self):
         response = self.client.get('/')
         self.assertTemplateUsed(response, 'base.html')
 
 class SignUpTest(TestCase):
-    #การทดสอบว่าผู้ใช้งานสามารถสมัครสมาชิกได้
+    # การทดสอบว่าผู้ใช้งานสามารถสมัครสมาชิกได้
     def test_user_signup(self):
         self.example_user = User.objects.create_user(username='Panachai', password='mypasswordisveryeasy',
                                                      email='panachai@test.com')
@@ -18,6 +18,7 @@ class SignUpTest(TestCase):
         example_users = User.objects.all()
         self.assertEqual(example_users.count(), 1)
 
+    # การทดสอบว่าผู้ใช้งานหลายคนสามารถสมัครสมาชิกได้
     def test_many_users_signup(self):
         self.example_user1 = User.objects.create_user(username='Panachai', password='Panachaipasswordisveryeasy',
                                                       email='panachai@test.com')
