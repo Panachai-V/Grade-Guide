@@ -37,7 +37,8 @@ class SignUpTest(TestCase):
         self.assertEqual(example_users.count(), 4)
 
 class LogInTest(TestCase):
-    def test_many_users_signup(self):
+    # การทดสอบว่าผู้ใช้งานสามารถลงทะเบียนเข้าใช้ได้
+    def test_user_login(self):
         User.objects.create_user(username='Panachai', password='Panachaipasswordisveryeasy')
         self.client.login(username="Panachai", password="Panachaipasswordisveryeasy")
 
