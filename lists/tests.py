@@ -87,6 +87,7 @@ class GradeCalTest(TestCase):
         self.assertEqual(example_saved_user.term7.first().subject, 'example_subject7')
         self.assertEqual(example_saved_user.term8.first().subject, 'example_subject8')
 
+    # การทดสอบว่าหน้า grade calculator สามารถบันทึก GPA ได้
     def test_gradeCal_can_save_GPA(self):
         example_user = Userinfo.objects.create(name='example_user ')
         example_GPA_data = GPA.objects.create(GPA_1 = "4",GPA_2 = "3.5",GPA_3 = "3",GPA_4 = "2.5",GPA_5 = "2",GPA_6 = "1.5",GPA_7 = "1",GPA_8 = "0.5")
