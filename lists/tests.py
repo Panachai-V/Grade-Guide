@@ -43,6 +43,7 @@ class LogInTest(TestCase):
         self.client.login(username="Panachai", password="Panachaipasswordisveryeasy")
 
 class GradeCalTest(TestCase):
+    # การทดสอบว่าหน้า grade calculator สามารถบันทึกข้อมูลเทอมแรกได้
     def test_gradeCal_can_save_first_term_data(self):
         example_user = Userinfo.objects.create(name='example_user ')
         example_data = Term1.objects.create(subject='example_subject', unit='1', Grade='A')
