@@ -715,6 +715,7 @@ def flow(request):
     
     return render(request, 'flow.html',{'subjects':subjects, 'Result':Result})
 
+# รายวิชาในเทอมต่างๆ ตั้งแต่เทอมที่ 1 ถึง 8
 def listOfSubject(request) :
     listSemister1 = """ Programming Fundamental<br />
             Engineering Mathematics I<br />
