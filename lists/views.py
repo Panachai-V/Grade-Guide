@@ -539,6 +539,7 @@ def termselect(request):
     termsel=str(request.POST.get('selectterm'))
     return render(request, 'home.html', {'term1': termsel})
 
+# รายละเอียดตัวต่อของวิชาต่างที่ผู้ใช้ต้องการทราบ
 def flow(request):
     Result = ''
     subjects = str(request.POST.get('searchFlow',''))
