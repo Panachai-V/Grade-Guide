@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from lists.models import Userinfo,Term1,Term2,Term3,Term4,Term5,Term6,Term7,Term8,GPA
 
 class HomePageTest(TestCase):
-    # การทดสอบว่าหน้า template ที่เรียกใช้ยังคงเป็นหน้า base.html อยู่
+    # การทดสอบว่าหน้า template ที่เรียกใช้ยังเป็นหน้า base.html
     def test_uses_home_template(self):
         response = self.client.get('/')
         self.assertTemplateUsed(response, 'base.html')

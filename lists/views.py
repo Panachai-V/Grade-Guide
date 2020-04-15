@@ -4,14 +4,26 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Term1,Term2,Term3,Term4,Term5,Term6,Term7,Term8,GPA
 
-#this is GradeGuide Page
+
 from lists.models import Userinfo
 
+#เรียกไฟล์ home.html เพื่อทำการ render
 def home_page(request):
-
     return render(request, 'home.html')
 
-#this is the Real HomePage
+#เรียกไฟล์ picFlow.html เพื่อทำการ render
+def picFlow(request):
+    return render(request, 'picFlow.html')
+
+#เรียกไฟล์ about.html เพื่อทำการ render
+def about(request):
+    return render(request, 'about.html')
+
+#เรียกไฟล์ help.html เพื่อทำการ render
+def help(request):
+    return render(request, 'help.html')
+
+
 def register(request):
     dataGPA = GPA.objects.all()
     if len(dataGPA) == 0:
@@ -20,7 +32,7 @@ def register(request):
     return render(request, 'index.html', {
         'count': count
     })
-#this is signup Page
+
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -1073,11 +1085,4 @@ def eightTerm(request):
     newGPAX = '%.2f' % resGPAX
     return render(request, 'eightTerm.html', {'dataterm8':dataterm_8,'GPARES':dataGPA,'res_GPAX': newGPAX})
 
-def picFlow(request):
-    return render(request, 'picFlow.html')
 
-def about(request):
-    return render(request, 'about.html')
-
-def help(request):
-    return render(request, 'help.html')
