@@ -7,23 +7,23 @@ from .models import Term1,Term2,Term3,Term4,Term5,Term6,Term7,Term8,GPA
 
 from lists.models import Userinfo
 
-#เรียกไฟล์ home.html เพื่อทำการ render
+# เรียกไฟล์ home.html เพื่อทำการ render
 def home_page(request):
     return render(request, 'home.html')
 
-#เรียกไฟล์ picFlow.html เพื่อทำการ render
+# เรียกไฟล์ picFlow.html เพื่อทำการ render
 def picFlow(request):
     return render(request, 'picFlow.html')
 
-#เรียกไฟล์ about.html เพื่อทำการ render
+# เรียกไฟล์ about.html เพื่อทำการ render
 def about(request):
     return render(request, 'about.html')
 
-#เรียกไฟล์ help.html เพื่อทำการ render
+# เรียกไฟล์ help.html เพื่อทำการ render
 def help(request):
     return render(request, 'help.html')
 
-
+# เมื่อทำการสมัครสมาชิกจะทำการส่งจำนวนสมาชิกทั้งหมดไปให้หน้า index.html
 def register(request):
     dataGPA = GPA.objects.all()
     if len(dataGPA) == 0:
