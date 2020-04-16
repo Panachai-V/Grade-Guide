@@ -7,7 +7,7 @@ from django.contrib import admin
 #from superlists
 
 urlpatterns = [
-    path('', views.register, name='register'),
+    path('', views.userCount, name='userCount'),
     path('calGrade', views.calGrade,name='calGrade'),
     path('termselect', views.termselect,name='termselect'),
     path('admin/', admin.site.urls),
@@ -18,7 +18,6 @@ urlpatterns = [
     url(r'help', views.help, name='help'),
     url(r'subject', views.listOfSubject, name='listOfSubjects'),
     url(r'graph', views.Graph, name='Graph'),
-    url(r'result', views.Result, name='Result'),
     url(r'picFlow', views.picFlow, name='picFlow'),
     url(r'firstTerm', views.firstTermResult, name='firstTerm'),
     url(r'secondTerm', views.secondTermResult, name='secondTerm'),

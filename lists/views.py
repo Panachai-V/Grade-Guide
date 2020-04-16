@@ -782,16 +782,7 @@ def listOfSubject(request) :
 
 # ส่งค่า GPA ทุกเทอมไปให้หน้า Graph.html เพื่อแสดงผลออกมาเป็นกราฟ
 def Graph(request):
-    countunit = 0
     GPAX = 0
-    dataterm_1 = Term1.objects.all()
-    dataterm_2 = Term2.objects.all()
-    dataterm_3 = Term3.objects.all()
-    dataterm_4 = Term4.objects.all()
-    dataterm_5 = Term5.objects.all()
-    dataterm_6 = Term6.objects.all()
-    dataterm_7 = Term7.objects.all()
-    dataterm_8 = Term8.objects.all()
     dataGPA = GPA.objects.all()
     countunit = 0
     if len(dataGPA) == 0:
@@ -820,26 +811,13 @@ def Graph(request):
         countunit+=1
     resGPAX = float(GPAX) / float(countunit)
     newGPAX = '%.2f' % resGPAX
-    return render(request, 'Graph.html', {'dataterm1': dataterm_1, 'dataterm2': dataterm_2, 'dataterm3': dataterm_3,
-                                          'dataterm4': dataterm_4, 'dataterm5': dataterm_5, 'dataterm6': dataterm_6,
-                                          'dataterm7': dataterm_7, 'dataterm8': dataterm_8, 'GPARES': dataGPA,
-                                          'res_GPAX': newGPAX})
-def Result(request):
-    dataGPA = GPA.objects.all()
-    if len(dataGPA) == 0:
-        GPA.objects.create(GPA_1=0, GPA_2=0, GPA_3=0, GPA_4=0, GPA_5=0, GPA_6=0, GPA_7=0, GPA_8=0, )
-    dataterm_1 = Term1.objects.all()
-    dataterm_2 = Term2.objects.all()
-    dataGPA = GPA.objects.all()
-    return render(request, 'Result.html',{'dataterm1':dataterm_1,'dataterm2':dataterm_2,'GPARES':dataGPA})
+    return render(request, 'Graph.html', {'GPARES': dataGPA,'res_GPAX': newGPAX})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 1
 def firstTermResult(request):
     dataGPA = GPA.objects.all()
     dataterm_1 = Term1.objects.all()
     countunit = 0
-    if len(dataGPA) == 0:
-        GPA.objects.create(GPA_1=0, GPA_2=0, GPA_3=0, GPA_4=0, GPA_5=0, GPA_6=0, GPA_7=0, GPA_8=0, )
     for i in dataGPA:
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
@@ -871,8 +849,6 @@ def secondTermResult(request):
     dataGPA = GPA.objects.all()
     dataterm_2 = Term2.objects.all()
     countunit = 0
-    if len(dataGPA) == 0:
-        GPA.objects.create(GPA_1=0, GPA_2=0, GPA_3=0, GPA_4=0, GPA_5=0, GPA_6=0, GPA_7=0, GPA_8=0, )
     for i in dataGPA:
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
@@ -904,8 +880,6 @@ def thirdTermResult(request):
     dataGPA = GPA.objects.all()
     dataterm_3 = Term3.objects.all()
     countunit = 0
-    if len(dataGPA) == 0:
-        GPA.objects.create(GPA_1=0, GPA_2=0, GPA_3=0, GPA_4=0, GPA_5=0, GPA_6=0, GPA_7=0, GPA_8=0, )
     for i in dataGPA:
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
@@ -937,8 +911,6 @@ def fourthTermResult(request):
     dataGPA = GPA.objects.all()
     dataterm_4 = Term4.objects.all()
     countunit = 0
-    if len(dataGPA) == 0:
-        GPA.objects.create(GPA_1=0, GPA_2=0, GPA_3=0, GPA_4=0, GPA_5=0, GPA_6=0, GPA_7=0, GPA_8=0, )
     for i in dataGPA:
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
@@ -970,8 +942,6 @@ def fifthTermResult(request):
     dataGPA = GPA.objects.all()
     dataterm_5 = Term5.objects.all()
     countunit = 0
-    if len(dataGPA) == 0:
-        GPA.objects.create(GPA_1=0, GPA_2=0, GPA_3=0, GPA_4=0, GPA_5=0, GPA_6=0, GPA_7=0, GPA_8=0, )
     for i in dataGPA:
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
@@ -1003,8 +973,6 @@ def sixthTermResult(request):
     dataGPA = GPA.objects.all()
     dataterm_6 = Term6.objects.all()
     countunit = 0
-    if len(dataGPA) == 0:
-        GPA.objects.create(GPA_1=0, GPA_2=0, GPA_3=0, GPA_4=0, GPA_5=0, GPA_6=0, GPA_7=0, GPA_8=0, )
     for i in dataGPA:
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
@@ -1036,8 +1004,6 @@ def seventhTermResult(request):
     dataterm_7 = Term7.objects.all()
     dataGPA = GPA.objects.all()
     countunit = 0
-    if len(dataGPA) == 0:
-        GPA.objects.create(GPA_1=0, GPA_2=0, GPA_3=0, GPA_4=0, GPA_5=0, GPA_6=0, GPA_7=0, GPA_8=0, )
     for i in dataGPA:
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
@@ -1069,8 +1035,6 @@ def eightTermResult(request):
     dataGPA = GPA.objects.all()
     dataterm_8 = Term8.objects.all()
     countunit = 0
-    if len(dataGPA) == 0:
-        GPA.objects.create(GPA_1=0, GPA_2=0, GPA_3=0, GPA_4=0, GPA_5=0, GPA_6=0, GPA_7=0, GPA_8=0, )
     for i in dataGPA:
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
@@ -1096,5 +1060,4 @@ def eightTermResult(request):
     resGPAX = float(GPAX) / float(countunit)
     newGPAX = '%.2f' % resGPAX
     return render(request, 'eightTerm.html', {'dataterm8':dataterm_8,'GPARES':dataGPA,'res_GPAX': newGPAX})
-
 
