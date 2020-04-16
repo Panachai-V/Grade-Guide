@@ -536,190 +536,187 @@ def cal_grade(request):
             message = 'Please select term before saving grade'
             return render(request, 'home.html',{'message':message})
 
-def termselect(request):
 
-    termsel=str(request.POST.get('selectterm'))
-    return render(request, 'home.html', {'term1': termsel})
 
 # รายละเอียดตัวต่อของวิชาต่างที่ผู้ใช้ต้องการทราบ
 def flow(request):
-    Result = ''
+    result = ''
     subjects = str(request.POST.get('searchFlow',''))
     if 'searchSubject' in request.POST :
         #1ProFund
         if subjects == "Programming Fundamental" :
-            Result = """Semister2 : Algorithms and Data Structures <br />
+            result = """Semister2 : Algorithms and Data Structures <br />
             Semister5 : Operating Systems"""
         #2MathI
         elif subjects == "Engineering Mathematics I" :
-            Result = """Semister2 : Math II <br />
+            result = """Semister2 : Math II <br />
             Semister3 : Statistics for Computer Engineer"""
         #3ComExplo
         elif subjects == "Computer Engineering Exploration" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #4PhysicsI
         elif subjects == "Physics I" :
-            Result = "Semister2 : Physics II"
+            result = "Semister2 : Physics II"
         #5PhyLabI
         elif subjects == "Physics Laboratory I" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #6EnglishI
         elif subjects == "Language Elective Course I" :
-            Result = "Language Elective Course II"
+            result = "Language Elective Course II"
         #7TableTennis
         elif subjects == "Physical Education Elective Course I" :
-            Result = "Physical Education Elective Course II"
+            result = "Physical Education Elective Course II"
         #8ManSo
         elif subjects == "Social Sciences Elective Course" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #9Intro
         elif subjects == "Introduction to Engineer" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #10Circuit
         elif subjects == "Electric Circuit Theory" :
-            Result = "Semister4 : Analog and Digital Electronics"
+            result = "Semister4 : Analog and Digital Electronics"
         #11CircuitLab
         elif subjects == "Electric Circuit Lab" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #12Algo
         elif subjects == "Algorithms and Data Structure" :
-            Result = """Semister3 : Software Development Practice I <br />
+            result = """Semister3 : Software Development Practice I <br />
             Semister5 : Computer Organization <br />
             Semister6 : Database Systems"""
         #13Work Ethics
         elif subjects == "Work Ethics" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #14MathII
         elif subjects == "Engineering Mathematics II" :
-            Result = """Semister3 : Discrete Mathematics <br />
+            result = """Semister3 : Discrete Mathematics <br />
             Semister3 : Introduction to Signals and System"""
         #15PhysicsII
         elif subjects == "Physics II" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #16PhyLab2
         elif subjects == "Physics Laboratory II" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #17EnglishII
         elif subjects == "Language Elective Course II" :
-            Result = "Language Elective Course III"
+            result = "Language Elective Course III"
         #18Basketball
         elif subjects == "Physical Education Elective Course II" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #19Stat
         elif subjects == "Statistics for Computer Engineer" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #20Signal
         elif subjects == "Introduction to Signals and System" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #21Digital
         elif subjects == "Logic Design of Digital System" :
-            Result = """Semister3 : Digital System Design Laboratory <br />
+            result = """Semister3 : Digital System Design Laboratory <br />
             Semister4 : Computer Organization"""
         #22DigiLab
         elif subjects == "Digital System Design Laboratory" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #23SoftwareI
         elif subjects == "Software Development Practice I" :
-            Result = "Semister4 : Software Development Practice II"
+            result = "Semister4 : Software Development Practice II"
         #24Discrete Math
         elif subjects == "Discrete Mathematics" :
-            Result = "Semister6 : Database Systems"
+            result = "Semister6 : Database Systems"
         #25PhyLife
         elif subjects == "Science and Maths Elective I" :
-            Result = "Science and Maths Elective II"
+            result = "Science and Maths Elective II"
         #26SoftwareII
         elif subjects == "Software Development Practice II" :
-            Result = "Semister5 : Software Engineering"
+            result = "Semister5 : Software Engineering"
         #27NetworkI
         elif subjects == "Computer Networks I" :
-            Result = "Semister5 : Computer Networks II"
+            result = "Semister5 : Computer Networks II"
         #28ComOr
         elif subjects == "Computer Organization" :
-            Result = "Semister5 : Embedded System Design"
+            result = "Semister5 : Embedded System Design"
         #29Ubi
         elif subjects == "Ubiquitous Computing" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #30Analog
         elif subjects == "Analog and Digital Electronics" :
-            Result = "Semister5 : Analog and Digital Electronics Lab"
+            result = "Semister5 : Analog and Digital Electronics Lab"
         #31GenMath
         elif subjects == "Science and Maths Elective II" :
-            Result = "Science and Maths Elective III"
+            result = "Science and Maths Elective III"
         #32SoftEng
         elif subjects == "Software Engineering" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #33NetworkII
         elif subjects == "Computer Networks II" :
-            Result = "Semister6 : Computer Networks Lab"
+            result = "Semister6 : Computer Networks Lab"
         #34OS
         elif subjects == "Operating Systems" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #35Embedded
         elif subjects == "Embedded System Design" :
-            Result = "Semister6 : Embedded System Design Laboratory"
+            result = "Semister6 : Embedded System Design Laboratory"
         #36AnalogLab
         elif subjects == "Analog and Digital Electronics Lab" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #37Language Elective III
         elif subjects == "Language Elective Course III" :
-            Result = "Language Elective Course IV"
+            result = "Language Elective Course IV"
         #38Database
         elif subjects == "Database Systems" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #39NetworkLab
         elif subjects == "Computer Networks Lab" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #40EmbeddedLab
         elif subjects == "Embedded System Design Laboratory" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #41Language Elective IV
         elif subjects == "Language Elective Course IV" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #42Computer Eng. Elective Course I
         elif subjects == "Computer Eng. Elective Course I" :
-            Result = "Computer Eng. Elective Course II"
+            result = "Computer Eng. Elective Course II"
         #43Computer Eng. Elective Course II
         elif subjects == "Computer Eng. Elective Course II" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #44Humanities Elective Course I
         elif subjects == "Humanities Elective Course I" :
-            Result = "Humanities Elective Course II"
+            result = "Humanities Elective Course II"
         #45ProjectI
         elif subjects == "Project I" :
-            Result = "Semister8 : Project II"
+            result = "Semister8 : Project II"
         #46Free Elective Course I
         elif subjects == "Free Elective Course I" :
-            Result = "Free Elective Course I"
+            result = "Free Elective Course I"
         #47Humanities Elective Course II
         elif subjects == "Humanities Elective Course II" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #48Computer Eng. Elective Course III
         elif subjects == "Computer Eng. Elective Course III" :
-            Result = "Computer Eng. Elective Course IV"
+            result = "Computer Eng. Elective Course IV"
         #49Computer Eng. Elective Course IV
         elif subjects == "Computer Eng. Elective Course IV" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #50ProjectII
         elif subjects == "Project II" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #51Computer Eng. Seminar
         elif subjects == "Computer Eng. Seminar" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #52Free Elective Course II
         elif subjects == "Free Elective Course II" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #53Science and Maths Elective III
         elif subjects == "Science and Maths Elective III" :
-            Result = "The subject hasn't other subjects to connect the flow"
+            result = "The subject hasn't other subjects to connect the flow"
         #Other
         else :
-            Result = "The subject isn't in the flow"
+            result = "The subject isn't in the flow"
     
-    return render(request, 'flow.html',{'subjects':subjects, 'Result':Result})
+    return render(request, 'flow.html',{'subjects':subjects, 'Result':result})
 
 # รายวิชาในเทอมต่างๆ ตั้งแต่เทอมที่ 1 ถึง 8
 def list_of_subject(request) :
-    listSemister1 = """ Programming Fundamental<br />
+    list_semister_1 = """ Programming Fundamental<br />
             Engineering Mathematics I<br />
             Computer Engineering Exploration<br />
             Physics I<br />
@@ -729,7 +726,7 @@ def list_of_subject(request) :
             Social Sciences Elective Course<br />
             Introduction to Engineer<br />"""
 
-    listSemister2 = """Electric Circuit Theory<br />
+    list_semister_2 = """Electric Circuit Theory<br />
             Electric Circuit Lab<br />
             Algorithms and Data Structure<br />
             Work Ethics<br />
@@ -739,7 +736,7 @@ def list_of_subject(request) :
             Language Elective Course II<br />
             Physical Education Elective Course II<br />"""
 
-    listSemister3 = """Statistics for Computer Engineer<br />
+    list_semister_3 = """Statistics for Computer Engineer<br />
             Introduction to Signals and System<br />
             Logic Design of Digital System<br />
             Digital System Design Laboratory<br />
@@ -747,21 +744,21 @@ def list_of_subject(request) :
             Discrete Mathematics<br />
             Science and Maths Elective I<br />"""
 
-    listSemister4 = """Software Development Practice II<br />
+    list_semister_4 = """Software Development Practice II<br />
             Computer Networks I<br />
             Computer Organization<br />
             Ubiquitous Computing<br />
             Analog and Digital Electronics<br />
             Science and Maths Elective II<br />"""
 
-    listSemister5 = """Software Engineering<br />
+    list_semister_5 = """Software Engineering<br />
             Computer Networks II<br />
             Operating Systems<br />
             Embedded System Design<br />
             Analog and Digital Electronics Lab<br />
             Language Elective Course III<br />"""
 
-    listSemister6 = """Database Systems<br />
+    list_semister_6 = """Database Systems<br />
             Computer Networks Lab<br />
             Embedded System Design Laboratory<br />
             Language Elective Course IV<br />
@@ -769,30 +766,30 @@ def list_of_subject(request) :
             Computer Eng. Elective Course II<br />
             Humanities Elective Course I<br />"""
 
-    listSemister7 = """Project I<br />
+    list_semister_7 = """Project I<br />
             Free Elective Course I<br />
             Humanities Elective Course II<br />
             Computer Eng. Elective Course III<br />
             Computer Eng. Elective Course IV<br />"""
 
-    listSemister8 = """Project II<br />
+    list_semister_8 = """Project II<br />
             Computer Eng. Seminar<br />
             Free Elective Course II<br />
             Science and Maths Elective III"""
 
-    return render(request, 'subject.html', {'semister1':listSemister1,'semister2':listSemister2,'semister3':listSemister3,'semister4':listSemister4,'semister5':listSemister5,'semister6':listSemister6,'semister7':listSemister7,'semister8':listSemister8})
+    return render(request, 'subject.html', {'semister1':list_semister_1,'semister2':list_semister_2,'semister3':list_semister_3,'semister4':list_semister_4,'semister5':list_semister_5,'semister6':list_semister_6,'semister7':list_semister_7,'semister8':list_semister_8})
 
 # ส่งค่า GPA ทุกเทอมไปให้หน้า Graph.html เพื่อแสดงผลออกมาเป็นกราฟ
 def graph(request):
-    GPAX = 0
-    dataGPA = GPA.objects.all()
+    sum_gpa = 0
+    data_gpa = GPA.objects.all()
     countunit = 0
-    if len(dataGPA) == 0:
+    if len(data_gpa) == 0:
         GPA.objects.create(GPA_1=0, GPA_2=0, GPA_3=0, GPA_4=0, GPA_5=0, GPA_6=0, GPA_7=0, GPA_8=0, )
-    for i in dataGPA:
-        GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
-    if GPAX > 0.0:
-        for unit in dataGPA:
+    for i in data_gpa:
+        sum_gpa = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
+    if sum_gpa > 0.0:
+        for unit in data_gpa:
             if unit.GPA_1 != '0' :
                 countunit+=1
             if unit.GPA_2 != '0' :
@@ -811,19 +808,20 @@ def graph(request):
                 countunit+=1
     else:
         countunit+=1
-    resGPAX = float(GPAX) / float(countunit)
-    newGPAX = '%.2f' % resGPAX
-    return render(request, 'Graph.html', {'GPARES': dataGPA,'res_GPAX': newGPAX})
+    result_gpax = float(sum_gpa) / float(countunit)
+    two_dec_gpax = '%.2f' % result_gpax
+    return render(request, 'Graph.html', {'GPARES': data_gpa,'res_GPAX': two_dec_gpax})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 1
 def first_term_result(request):
-    dataGPA = GPA.objects.all()
+    sum_gpa = 0
+    data_gpa = GPA.objects.all()
     dataterm_1 = Term1.objects.all()
     countunit = 0
-    for i in dataGPA:
-        GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
-    if GPAX > 0.0:
-        for unit in dataGPA:
+    for i in data_gpa:
+        sum_gpa = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
+    if sum_gpa > 0.0:
+        for unit in data_gpa:
             if unit.GPA_1 != '0' :
                 countunit+=1
             if unit.GPA_2 != '0' :
@@ -842,19 +840,20 @@ def first_term_result(request):
                 countunit+=1
     else:
         countunit+=1
-    resGPAX = float(GPAX) / float(countunit)
-    newGPAX = '%.2f' % resGPAX
-    return render(request, 'firstTerm.html', {'dataterm1':dataterm_1,'GPARES':dataGPA,'res_GPAX': newGPAX})
+    result_gpax = float(sum_gpa) / float(countunit)
+    two_dec_gpax = '%.2f' % result_gpax
+    return render(request, 'firstTerm.html', {'dataterm1':dataterm_1,'GPARES':data_gpa,'res_GPAX': two_dec_gpax})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 2
 def second_term_result(request):
-    dataGPA = GPA.objects.all()
+    sum_gpa = 0
+    data_gpa = GPA.objects.all()
     dataterm_2 = Term2.objects.all()
     countunit = 0
-    for i in dataGPA:
-        GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
-    if GPAX > 0.0:
-        for unit in dataGPA:
+    for i in data_gpa:
+        sum_gpa = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
+    if sum_gpa > 0.0:
+        for unit in data_gpa:
             if unit.GPA_1 != '0' :
                 countunit+=1
             if unit.GPA_2 != '0' :
@@ -873,19 +872,20 @@ def second_term_result(request):
                 countunit+=1
     else:
         countunit+=1
-    resGPAX = float(GPAX) / float(countunit)
-    newGPAX = '%.2f' % resGPAX
-    return render(request, 'secondTerm.html', {'dataterm2':dataterm_2,'GPARES':dataGPA,'res_GPAX': newGPAX})
+    result_gpax = float(sum_gpa) / float(countunit)
+    two_dec_gpax = '%.2f' % result_gpax
+    return render(request, 'secondTerm.html', {'dataterm2':dataterm_2,'GPARES':data_gpa,'res_GPAX': two_dec_gpax})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 3
 def third_term_result(request):
-    dataGPA = GPA.objects.all()
+    sum_gpa = 0
+    data_gpa = GPA.objects.all()
     dataterm_3 = Term3.objects.all()
     countunit = 0
-    for i in dataGPA:
-        GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
-    if GPAX > 0.0:
-        for unit in dataGPA:
+    for i in data_gpa:
+        sum_gpa = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
+    if sum_gpa > 0.0:
+        for unit in data_gpa:
             if unit.GPA_1 != '0' :
                 countunit+=1
             if unit.GPA_2 != '0' :
@@ -904,19 +904,20 @@ def third_term_result(request):
                 countunit+=1
     else:
         countunit+=1
-    resGPAX = float(GPAX) / float(countunit)
-    newGPAX = '%.2f' % resGPAX
-    return render(request, 'thirdTerm.html', {'dataterm3':dataterm_3,'GPARES':dataGPA,'res_GPAX': newGPAX})
+    result_gpax = float(sum_gpa) / float(countunit)
+    two_dec_gpax = '%.2f' % result_gpax
+    return render(request, 'thirdTerm.html', {'dataterm3':dataterm_3,'GPARES':data_gpa,'res_GPAX': two_dec_gpax})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 4
 def fourth_term_result(request):
-    dataGPA = GPA.objects.all()
+    sum_gpa = 0
+    data_gpa = GPA.objects.all()
     dataterm_4 = Term4.objects.all()
     countunit = 0
-    for i in dataGPA:
-        GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
-    if GPAX > 0.0:
-        for unit in dataGPA:
+    for i in data_gpa:
+        sum_gpa = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
+    if sum_gpa > 0.0:
+        for unit in data_gpa:
             if unit.GPA_1 != '0' :
                 countunit+=1
             if unit.GPA_2 != '0' :
@@ -935,19 +936,20 @@ def fourth_term_result(request):
                 countunit+=1
     else:
         countunit+=1
-    resGPAX = float(GPAX) / float(countunit)
-    newGPAX = '%.2f' % resGPAX
-    return render(request, 'fourthTerm.html', {'dataterm4':dataterm_4,'GPARES':dataGPA,'res_GPAX': newGPAX})
+    result_gpax = float(sum_gpa) / float(countunit)
+    two_dec_gpax = '%.2f' % result_gpax
+    return render(request, 'fourthTerm.html', {'dataterm4':dataterm_4,'GPARES':data_gpa,'res_GPAX': two_dec_gpax})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 5
 def fifth_term_result(request):
-    dataGPA = GPA.objects.all()
+    sum_gpa = 0
+    data_gpa = GPA.objects.all()
     dataterm_5 = Term5.objects.all()
     countunit = 0
-    for i in dataGPA:
-        GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
-    if GPAX > 0.0:
-        for unit in dataGPA:
+    for i in data_gpa:
+        sum_gpa = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
+    if sum_gpa > 0.0:
+        for unit in data_gpa:
             if unit.GPA_1 != '0' :
                 countunit+=1
             if unit.GPA_2 != '0' :
@@ -966,19 +968,20 @@ def fifth_term_result(request):
                 countunit+=1
     else:
         countunit+=1
-    resGPAX = float(GPAX) / float(countunit)
-    newGPAX = '%.2f' % resGPAX
-    return render(request, 'fifthTerm.html', {'dataterm5':dataterm_5,'GPARES':dataGPA,'res_GPAX': newGPAX})
+    result_gpax = float(sum_gpa) / float(countunit)
+    two_dec_gpax = '%.2f' % result_gpax
+    return render(request, 'fifthTerm.html', {'dataterm5':dataterm_5,'GPARES':data_gpa,'res_GPAX': two_dec_gpax})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 6
 def sixth_term_result(request):
-    dataGPA = GPA.objects.all()
+    sum_gpa = 0
+    data_gpa = GPA.objects.all()
     dataterm_6 = Term6.objects.all()
     countunit = 0
-    for i in dataGPA:
-        GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
-    if GPAX > 0.0:
-        for unit in dataGPA:
+    for i in data_gpa:
+        sum_gpa = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
+    if sum_gpa > 0.0:
+        for unit in data_gpa:
             if unit.GPA_1 != '0' :
                 countunit+=1
             if unit.GPA_2 != '0' :
@@ -997,19 +1000,20 @@ def sixth_term_result(request):
                 countunit+=1
     else:
         countunit+=1
-    resGPAX = float(GPAX) / float(countunit)
-    newGPAX = '%.2f' % resGPAX
-    return render(request, 'sixthTerm.html', {'dataterm6':dataterm_6,'GPARES':dataGPA,'res_GPAX': newGPAX})
+    result_gpax = float(sum_gpa) / float(countunit)
+    two_dec_gpax = '%.2f' % result_gpax
+    return render(request, 'sixthTerm.html', {'dataterm6':dataterm_6,'GPARES':data_gpa,'res_GPAX': two_dec_gpax})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 7
 def seventh_term_result(request):
+    sum_gpa = 0
     dataterm_7 = Term7.objects.all()
-    dataGPA = GPA.objects.all()
+    data_gpa = GPA.objects.all()
     countunit = 0
-    for i in dataGPA:
-        GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
-    if GPAX > 0.0:
-        for unit in dataGPA:
+    for i in data_gpa:
+        sum_gpa = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
+    if sum_gpa > 0.0:
+        for unit in data_gpa:
             if unit.GPA_1 != '0' :
                 countunit+=1
             if unit.GPA_2 != '0' :
@@ -1028,19 +1032,20 @@ def seventh_term_result(request):
                 countunit+=1
     else:
         countunit+=1
-    resGPAX = float(GPAX) / float(countunit)
-    newGPAX = '%.2f' % resGPAX
-    return render(request, 'seventhTerm.html', {'dataterm7':dataterm_7,'GPARES':dataGPA,'res_GPAX': newGPAX})
+    result_gpax = float(sum_gpa) / float(countunit)
+    two_dec_gpax = '%.2f' % result_gpax
+    return render(request, 'seventhTerm.html', {'dataterm7':dataterm_7,'GPARES':data_gpa,'res_GPAX': two_dec_gpax})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 8
 def eight_term_result(request):
-    dataGPA = GPA.objects.all()
+    sum_gpa = 0
+    data_gpa = GPA.objects.all()
     dataterm_8 = Term8.objects.all()
     countunit = 0
-    for i in dataGPA:
-        GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
-    if GPAX > 0.0:
-        for unit in dataGPA:
+    for i in data_gpa:
+        sum_gpa = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
+    if sum_gpa > 0.0:
+        for unit in data_gpa:
             if unit.GPA_1 != '0' :
                 countunit+=1
             if unit.GPA_2 != '0' :
@@ -1059,7 +1064,7 @@ def eight_term_result(request):
                 countunit+=1
     else:
         countunit+=1
-    resGPAX = float(GPAX) / float(countunit)
-    newGPAX = '%.2f' % resGPAX
-    return render(request, 'eightTerm.html', {'dataterm8':dataterm_8,'GPARES':dataGPA,'res_GPAX': newGPAX})
+    result_gpax = float(sum_gpa) / float(countunit)
+    two_dec_gpax = '%.2f' % result_gpax
+    return render(request, 'eightTerm.html', {'dataterm8':dataterm_8,'GPARES':data_gpa,'res_GPAX': two_dec_gpax})
 
