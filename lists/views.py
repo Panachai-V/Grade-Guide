@@ -51,7 +51,7 @@ def signup(request):
     return render(request, 'registration/signup.html', {
         'form': form
     })
-#this is login page
+
 def calGrade(request):
     term1 = Term1()
     term2 = Term2()
@@ -831,7 +831,9 @@ def Result(request):
     dataterm_2 = Term2.objects.all()
     dataGPA = GPA.objects.all()
     return render(request, 'Result.html',{'dataterm1':dataterm_1,'dataterm2':dataterm_2,'GPARES':dataGPA})
-def firstTerm(request):
+
+# การแสดงเกรดและคำนวณ GPAX เทอมที่ 1
+def firstTermResult(request):
     dataGPA = GPA.objects.all()
     dataterm_1 = Term1.objects.all()
     countunit = 0
@@ -863,7 +865,8 @@ def firstTerm(request):
     newGPAX = '%.2f' % resGPAX
     return render(request, 'firstTerm.html', {'dataterm1':dataterm_1,'GPARES':dataGPA,'res_GPAX': newGPAX})
 
-def secondTerm(request):
+# การแสดงเกรดและคำนวณ GPAX เทอมที่ 2
+def secondTermResult(request):
     dataGPA = GPA.objects.all()
     dataterm_2 = Term2.objects.all()
     countunit = 0
@@ -895,7 +898,8 @@ def secondTerm(request):
     newGPAX = '%.2f' % resGPAX
     return render(request, 'secondTerm.html', {'dataterm2':dataterm_2,'GPARES':dataGPA,'res_GPAX': newGPAX})
 
-def thirdTerm(request):
+# การแสดงเกรดและคำนวณ GPAX เทอมที่ 3
+def thirdTermResult(request):
     dataGPA = GPA.objects.all()
     dataterm_3 = Term3.objects.all()
     countunit = 0
@@ -927,7 +931,8 @@ def thirdTerm(request):
     newGPAX = '%.2f' % resGPAX
     return render(request, 'thirdTerm.html', {'dataterm3':dataterm_3,'GPARES':dataGPA,'res_GPAX': newGPAX})
 
-def fourthTerm(request):
+# การแสดงเกรดและคำนวณ GPAX เทอมที่ 4
+def fourthTermResult(request):
     dataGPA = GPA.objects.all()
     dataterm_4 = Term4.objects.all()
     countunit = 0
@@ -959,7 +964,8 @@ def fourthTerm(request):
     newGPAX = '%.2f' % resGPAX
     return render(request, 'fourthTerm.html', {'dataterm4':dataterm_4,'GPARES':dataGPA,'res_GPAX': newGPAX})
 
-def fifthTerm(request):
+# การแสดงเกรดและคำนวณ GPAX เทอมที่ 5
+def fifthTermResult(request):
     dataGPA = GPA.objects.all()
     dataterm_5 = Term5.objects.all()
     countunit = 0
@@ -991,7 +997,8 @@ def fifthTerm(request):
     newGPAX = '%.2f' % resGPAX
     return render(request, 'fifthTerm.html', {'dataterm5':dataterm_5,'GPARES':dataGPA,'res_GPAX': newGPAX})
 
-def sixthTerm(request):
+# การแสดงเกรดและคำนวณ GPAX เทอมที่ 6
+def sixthTermResult(request):
     dataGPA = GPA.objects.all()
     dataterm_6 = Term6.objects.all()
     countunit = 0
@@ -1023,7 +1030,8 @@ def sixthTerm(request):
     newGPAX = '%.2f' % resGPAX
     return render(request, 'sixthTerm.html', {'dataterm6':dataterm_6,'GPARES':dataGPA,'res_GPAX': newGPAX})
 
-def seventhTerm(request):
+# การแสดงเกรดและคำนวณ GPAX เทอมที่ 7
+def seventhTermResult(request):
     dataterm_7 = Term7.objects.all()
     dataGPA = GPA.objects.all()
     countunit = 0
@@ -1055,7 +1063,8 @@ def seventhTerm(request):
     newGPAX = '%.2f' % resGPAX
     return render(request, 'seventhTerm.html', {'dataterm7':dataterm_7,'GPARES':dataGPA,'res_GPAX': newGPAX})
 
-def eightTerm(request):
+# การแสดงเกรดและคำนวณ GPAX เทอมที่ 8
+def eightTermResult(request):
     dataGPA = GPA.objects.all()
     dataterm_8 = Term8.objects.all()
     countunit = 0
