@@ -780,6 +780,7 @@ def listOfSubject(request) :
 
     return render(request, 'subject.html', {'semister1':listSemister1,'semister2':listSemister2,'semister3':listSemister3,'semister4':listSemister4,'semister5':listSemister5,'semister6':listSemister6,'semister7':listSemister7,'semister8':listSemister8})
 
+# ส่งค่า GPA ทุกเทอมไปให้หน้า Graph.html เพื่อแสดงผลออกมาเป็นกราฟ
 def Graph(request):
     countunit = 0
     GPAX = 0
