@@ -12,7 +12,7 @@ def home_page(request):
     return render(request, 'home.html')
 
 # เรียกไฟล์ picFlow.html เพื่อทำการ render โดยหน้า picFlow จะเป็นหน้ารูปของแผนผังวิชาต่างๆ
-def picFlow(request):
+def pic_flow(request):
     return render(request, 'picFlow.html')
 
 # เรียกไฟล์ about.html เพื่อทำการ render
@@ -24,7 +24,7 @@ def help(request):
     return render(request, 'help.html')
 
 # ส่งจำนวนสมาชิกทั้งหมดเพื่อทำการ render
-def userCount(request):
+def user_count(request):
     dataGPA = GPA.objects.all()
     if len(dataGPA) == 0:
         GPA.objects.create(GPA_1=0, GPA_2=0, GPA_3=0, GPA_4=0, GPA_5=0, GPA_6=0, GPA_7=0, GPA_8=0, )
@@ -54,7 +54,7 @@ def signup(request):
     })
 
 # ส่วนของการคิดเกรดและบันทึกเกรด
-def calGrade(request):
+def cal_grade(request):
     term1 = Term1()
     term2 = Term2()
     not_input = 'Plese check your infromation before saving.'
@@ -718,7 +718,7 @@ def flow(request):
     return render(request, 'flow.html',{'subjects':subjects, 'Result':Result})
 
 # รายวิชาในเทอมต่างๆ ตั้งแต่เทอมที่ 1 ถึง 8
-def listOfSubject(request) :
+def list_of_subject(request) :
     listSemister1 = """ Programming Fundamental<br />
             Engineering Mathematics I<br />
             Computer Engineering Exploration<br />
@@ -783,7 +783,7 @@ def listOfSubject(request) :
     return render(request, 'subject.html', {'semister1':listSemister1,'semister2':listSemister2,'semister3':listSemister3,'semister4':listSemister4,'semister5':listSemister5,'semister6':listSemister6,'semister7':listSemister7,'semister8':listSemister8})
 
 # ส่งค่า GPA ทุกเทอมไปให้หน้า Graph.html เพื่อแสดงผลออกมาเป็นกราฟ
-def Graph(request):
+def graph(request):
     GPAX = 0
     dataGPA = GPA.objects.all()
     countunit = 0
@@ -816,7 +816,7 @@ def Graph(request):
     return render(request, 'Graph.html', {'GPARES': dataGPA,'res_GPAX': newGPAX})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 1
-def firstTermResult(request):
+def first_term_result(request):
     dataGPA = GPA.objects.all()
     dataterm_1 = Term1.objects.all()
     countunit = 0
@@ -847,7 +847,7 @@ def firstTermResult(request):
     return render(request, 'firstTerm.html', {'dataterm1':dataterm_1,'GPARES':dataGPA,'res_GPAX': newGPAX})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 2
-def secondTermResult(request):
+def second_term_result(request):
     dataGPA = GPA.objects.all()
     dataterm_2 = Term2.objects.all()
     countunit = 0
@@ -878,7 +878,7 @@ def secondTermResult(request):
     return render(request, 'secondTerm.html', {'dataterm2':dataterm_2,'GPARES':dataGPA,'res_GPAX': newGPAX})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 3
-def thirdTermResult(request):
+def third_term_result(request):
     dataGPA = GPA.objects.all()
     dataterm_3 = Term3.objects.all()
     countunit = 0
@@ -909,7 +909,7 @@ def thirdTermResult(request):
     return render(request, 'thirdTerm.html', {'dataterm3':dataterm_3,'GPARES':dataGPA,'res_GPAX': newGPAX})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 4
-def fourthTermResult(request):
+def fourth_term_result(request):
     dataGPA = GPA.objects.all()
     dataterm_4 = Term4.objects.all()
     countunit = 0
@@ -940,7 +940,7 @@ def fourthTermResult(request):
     return render(request, 'fourthTerm.html', {'dataterm4':dataterm_4,'GPARES':dataGPA,'res_GPAX': newGPAX})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 5
-def fifthTermResult(request):
+def fifth_term_result(request):
     dataGPA = GPA.objects.all()
     dataterm_5 = Term5.objects.all()
     countunit = 0
@@ -971,7 +971,7 @@ def fifthTermResult(request):
     return render(request, 'fifthTerm.html', {'dataterm5':dataterm_5,'GPARES':dataGPA,'res_GPAX': newGPAX})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 6
-def sixthTermResult(request):
+def sixth_term_result(request):
     dataGPA = GPA.objects.all()
     dataterm_6 = Term6.objects.all()
     countunit = 0
@@ -1002,7 +1002,7 @@ def sixthTermResult(request):
     return render(request, 'sixthTerm.html', {'dataterm6':dataterm_6,'GPARES':dataGPA,'res_GPAX': newGPAX})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 7
-def seventhTermResult(request):
+def seventh_term_result(request):
     dataterm_7 = Term7.objects.all()
     dataGPA = GPA.objects.all()
     countunit = 0
@@ -1033,7 +1033,7 @@ def seventhTermResult(request):
     return render(request, 'seventhTerm.html', {'dataterm7':dataterm_7,'GPARES':dataGPA,'res_GPAX': newGPAX})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 8
-def eightTermResult(request):
+def eight_term_result(request):
     dataGPA = GPA.objects.all()
     dataterm_8 = Term8.objects.all()
     countunit = 0
