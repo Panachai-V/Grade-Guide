@@ -293,12 +293,12 @@ class NewVisitorTest(unittest.TestCase):
 
         # เธอเห็นประโยคที่อยู่ก่อนหน้าปุ่ม subjects
         defination = self.browser.find_element_by_tag_name('p1').text
-        self.assertEqual("If you can't remember the subject's name , The Subjects button will help you. :)",defination)
+        self.assertEqual('If you can\'t remember the subject''s name , The Subjects button will help you. :)',defination)
 
         # test subjects button
         # เธอจำชื่อวิชาไม่ได้
         # เธอจึงคลิกไปที่ปุ่ม subjects เพื่อที่เธอจะได้ดูชื่อวิชา
-        subject_button = self.browser.find_element_by_id("subject_button")
+        subject_button = self.browser.find_element_by_id('subject_button')
         subject_button.click()
         time.sleep(5)
 
@@ -313,7 +313,7 @@ class NewVisitorTest(unittest.TestCase):
         # test search box
         # เธอเห็นช่องสำหรับใส่ชื่อวิชาเพื่อค้นหาวิชาที่เป็นตัวต่อกัน
         # เธอจึงพิมพ์วิชา Programming Fundamental ลงไป
-        subject_placeholder = self.browser.find_element_by_id("search_placeholder")
+        subject_placeholder = self.browser.find_element_by_id('search_placeholder')
         self.assertEqual(
             subject_placeholder.get_attribute('type'),
             'text'
@@ -324,7 +324,7 @@ class NewVisitorTest(unittest.TestCase):
 
         # test submit button
         # เธอจึงกดปุ่ม search เพื่อทำการหาตัวต่อของวิชา Programming Fundamental
-        submit_button = self.browser.find_element_by_id("submit_button")
+        submit_button = self.browser.find_element_by_id('submit_button')
         self.assertEqual(
             submit_button.get_attribute('type'),
             'submit'
@@ -341,12 +341,12 @@ class NewVisitorTest(unittest.TestCase):
         # test search result
         # เธอเห็นผลของการ search ของเธอ หลังจากที่กดปุ่ม search ไป
         result_search = self.browser.find_element_by_tag_name('p2').text
-        self.assertEqual("Semister2 : Algorithms and Data Structures\nSemister5 : Operating Systems",result_search)
+        self.assertEqual('Semister2 : Algorithms and Data Structures\nSemister5 : Operating Systems',result_search)
 
         # test Note
         # เธอเห็นประโยคด้านล่างเกี่ยวกับวิชาเลือก
         note = self.browser.find_element_by_tag_name('p3').text
-        self.assertEqual("Note : Elective Subjects don't connect to each other but I want to show how many elective subjects are in this flow.", note)
+        self.assertEqual('Note : Elective Subjects don\'t connect to each other but I want to show how many elective subjects are in this flow.', note)
 
         self.fail('Finish the test!')
         
@@ -358,12 +358,12 @@ class NewVisitorTest(unittest.TestCase):
         # test fullflow button
         # เธออยากดูภาพรวมของวิชาทั้งหมดที่เธอต้องเรียน
         # เธอจึงคลิกไปที่ปุ่ม Full Flow เพื่อไปยังรูป flow
-        flow_button = self.browser.find_element_by_id("fullflow_button")
+        flow_button = self.browser.find_element_by_id('fullflow_button')
         flow_button.click()
 
         # test can find the flow picture
         # เธอเห็นภาพวิชาตัวต่อทั้งหมด
-        flow_image = self.browser.find_element_by_id("image")
+        flow_image = self.browser.find_element_by_id('image')
         self.assertEqual(
             flow_image.get_attribute('id'),
             'image'
@@ -375,11 +375,11 @@ class NewVisitorTest(unittest.TestCase):
         # เมื่อเขากดเข้าไปที่หน้า signup
         self.browser.get('http://localhost:8000/signup')
 
-        username_box = self.browser.find_element_by_id("id_username")
+        username_box = self.browser.find_element_by_id('id_username')
 
-        password_box = self.browser.find_element_by_id("id_password1")
+        password_box = self.browser.find_element_by_id('id_password1')
 
-        password_box2 = self.browser.find_element_by_id("id_password2")
+        password_box2 = self.browser.find_element_by_id('id_password2')
 
         # เขาทำการสมัคร username jesselingard
         # password lingard123456789
@@ -388,7 +388,7 @@ class NewVisitorTest(unittest.TestCase):
         password_box.send_keys('lingard123456789')
         password_box2.send_keys('lingard123456789')
         # เขาทำการกดปุ่ม signup
-        signup_button = self.browser.find_element_by_tag_name("button")
+        signup_button = self.browser.find_element_by_tag_name('button')
         signup_button.click()
         time.sleep(2)
         # เขาเข้าไปที่หน้า login
@@ -396,14 +396,14 @@ class NewVisitorTest(unittest.TestCase):
         header_text = self.browser.find_element_by_tag_name('h2').text
         self.assertIn('Log in', header_text)
 
-        username_login_box = self.browser.find_element_by_id("id_username")
+        username_login_box = self.browser.find_element_by_id('id_username')
 
-        password_login_box = self.browser.find_element_by_id("id_password")
+        password_login_box = self.browser.find_element_by_id('id_password')
         # เขาใส่ id password
         username_login_box.send_keys('jesselingard')
         password_login_box.send_keys('lingard123456789')
         # เขากดปุ่ม login
-        login_button = self.browser.find_element_by_tag_name("button")
+        login_button = self.browser.find_element_by_tag_name('button')
         login_button.click()
         time.sleep(2)
         # เขาเข้าไปที่หน้า homepage
@@ -418,7 +418,7 @@ class NewVisitorTest(unittest.TestCase):
         unit_text.send_keys('Grade: 2.5&nbsp; (C+)')
         time.sleep(3)
         # เขาเห็นเกรดแสดงขึ้นมา
-        submit_button = self.browser.find_element_by_id("submit")
+        submit_button = self.browser.find_element_by_id('submit')
         submit_button.click()
         time.sleep(3)
         submit_text = self.browser.find_element_by_id('gradeshow').text

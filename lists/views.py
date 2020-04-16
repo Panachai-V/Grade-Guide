@@ -33,6 +33,7 @@ def userCount(request):
         'count': count
     })
 
+# สมัครสมาชิก
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -52,10 +53,11 @@ def signup(request):
         'form': form
     })
 
+# ส่วนของการคิดเกรดและบันทึกเกรด
 def calGrade(request):
     term1 = Term1()
     term2 = Term2()
-    not_input = "Plese check your infromation before saving."
+    not_input = 'Plese check your infromation before saving.'
     checkinput = float(request.POST.get('subject1Unit')) + float(request.POST.get('subject1Grade'))+\
                  float(request.POST.get('subject2Unit')) + float(request.POST.get('subject2Grade'))+\
                  float(request.POST.get('subject3Unit')) + float(request.POST.get('subject3Grade'))+\
@@ -66,7 +68,7 @@ def calGrade(request):
                  float(request.POST.get('subject8Unit')) + float(request.POST.get('subject8Grade'))+\
                  float(request.POST.get('subject9Unit')) + float(request.POST.get('subject9Grade'))
     if len(Term1.objects.all()) <= 9:
-        if request.POST.get('subjectTerm') == "1":
+        if request.POST.get('subjectTerm') == '1':
             if checkinput == 0.0:
                 return render(request, 'home.html', {'notinput': not_input})
             sub1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
@@ -126,7 +128,7 @@ def calGrade(request):
                 term1.GPA = res
                 return render(request, 'home.html',{'result':res})
 
-        if request.POST.get('subjectTerm') == "2":
+        if request.POST.get('subjectTerm') == '2':
             if checkinput == 0.0:
                 return render(request, 'home.html', {'notinput': not_input})
             sub1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
@@ -183,7 +185,7 @@ def calGrade(request):
                 term2.GPA = res
                 return render(request, 'home.html',{'result':res})
 
-        if request.POST.get('subjectTerm') == "3":
+        if request.POST.get('subjectTerm') == '3':
             if checkinput == 0.0:
                 return render(request, 'home.html', {'notinput': not_input})
             sub1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
@@ -241,7 +243,7 @@ def calGrade(request):
                 return render(request, 'home.html',{'result':res})
 
 
-        if request.POST.get('subjectTerm') == "4":
+        if request.POST.get('subjectTerm') == '4':
             if checkinput == 0.0:
                 return render(request, 'home.html', {'notinput': not_input})
             sub1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
@@ -298,7 +300,7 @@ def calGrade(request):
 
                 Term4.GPA = res
                 return render(request, 'home.html',{'result':res})
-        if request.POST.get('subjectTerm') == "5":
+        if request.POST.get('subjectTerm') == '5':
             if checkinput == 0.0:
                 return render(request, 'home.html', {'notinput': not_input})
             sub1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
@@ -356,7 +358,7 @@ def calGrade(request):
 
                 Term5.GPA = res
                 return render(request, 'home.html',{'result':res})
-        if request.POST.get('subjectTerm') == "6":
+        if request.POST.get('subjectTerm') == '6':
             if checkinput == 0.0:
                 return render(request, 'home.html', {'notinput': not_input})
             sub1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
@@ -414,7 +416,7 @@ def calGrade(request):
 
                 Term6.GPA = res
                 return render(request, 'home.html',{'result':res})
-        if request.POST.get('subjectTerm') == "7":
+        if request.POST.get('subjectTerm') == '7':
             if checkinput == 0.0:
                 return render(request, 'home.html', {'notinput': not_input})
             sub1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
@@ -474,7 +476,7 @@ def calGrade(request):
                 return render(request, 'home.html',{'result':res})
 
 
-        if request.POST.get('subjectTerm') == "8":
+        if request.POST.get('subjectTerm') == '8':
             if checkinput == 0.0:
                 return render(request, 'home.html', {'notinput': not_input})
             sub1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
@@ -791,21 +793,21 @@ def Graph(request):
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
         for unit in dataGPA:
-            if unit.GPA_1 != "0" :
+            if unit.GPA_1 != '0' :
                 countunit+=1
-            if unit.GPA_2 != "0" :
+            if unit.GPA_2 != '0' :
                 countunit+=1
-            if unit.GPA_3 != "0" :
+            if unit.GPA_3 != '0' :
                 countunit+=1
-            if unit.GPA_4 != "0" :
+            if unit.GPA_4 != '0' :
                 countunit+=1
-            if unit.GPA_5 != "0" :
+            if unit.GPA_5 != '0' :
                 countunit+=1
-            if unit.GPA_6 != "0" :
+            if unit.GPA_6 != '0' :
                 countunit+=1
-            if unit.GPA_7 != "0" :
+            if unit.GPA_7 != '0' :
                 countunit+=1
-            if unit.GPA_8 != "0" :
+            if unit.GPA_8 != '0' :
                 countunit+=1
     else:
         countunit+=1
@@ -822,21 +824,21 @@ def firstTermResult(request):
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
         for unit in dataGPA:
-            if unit.GPA_1 != "0" :
+            if unit.GPA_1 != '0' :
                 countunit+=1
-            if unit.GPA_2 != "0" :
+            if unit.GPA_2 != '0' :
                 countunit+=1
-            if unit.GPA_3 != "0" :
+            if unit.GPA_3 != '0' :
                 countunit+=1
-            if unit.GPA_4 != "0" :
+            if unit.GPA_4 != '0' :
                 countunit+=1
-            if unit.GPA_5 != "0" :
+            if unit.GPA_5 != '0' :
                 countunit+=1
-            if unit.GPA_6 != "0" :
+            if unit.GPA_6 != '0' :
                 countunit+=1
-            if unit.GPA_7 != "0" :
+            if unit.GPA_7 != '0' :
                 countunit+=1
-            if unit.GPA_8 != "0" :
+            if unit.GPA_8 != '0' :
                 countunit+=1
     else:
         countunit+=1
@@ -853,21 +855,21 @@ def secondTermResult(request):
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
         for unit in dataGPA:
-            if unit.GPA_1 != "0" :
+            if unit.GPA_1 != '0' :
                 countunit+=1
-            if unit.GPA_2 != "0" :
+            if unit.GPA_2 != '0' :
                 countunit+=1
-            if unit.GPA_3 != "0" :
+            if unit.GPA_3 != '0' :
                 countunit+=1
-            if unit.GPA_4 != "0" :
+            if unit.GPA_4 != '0' :
                 countunit+=1
-            if unit.GPA_5 != "0" :
+            if unit.GPA_5 != '0' :
                 countunit+=1
-            if unit.GPA_6 != "0" :
+            if unit.GPA_6 != '0' :
                 countunit+=1
-            if unit.GPA_7 != "0" :
+            if unit.GPA_7 != '0' :
                 countunit+=1
-            if unit.GPA_8 != "0" :
+            if unit.GPA_8 != '0' :
                 countunit+=1
     else:
         countunit+=1
@@ -884,21 +886,21 @@ def thirdTermResult(request):
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
         for unit in dataGPA:
-            if unit.GPA_1 != "0" :
+            if unit.GPA_1 != '0' :
                 countunit+=1
-            if unit.GPA_2 != "0" :
+            if unit.GPA_2 != '0' :
                 countunit+=1
-            if unit.GPA_3 != "0" :
+            if unit.GPA_3 != '0' :
                 countunit+=1
-            if unit.GPA_4 != "0" :
+            if unit.GPA_4 != '0' :
                 countunit+=1
-            if unit.GPA_5 != "0" :
+            if unit.GPA_5 != '0' :
                 countunit+=1
-            if unit.GPA_6 != "0" :
+            if unit.GPA_6 != '0' :
                 countunit+=1
-            if unit.GPA_7 != "0" :
+            if unit.GPA_7 != '0' :
                 countunit+=1
-            if unit.GPA_8 != "0" :
+            if unit.GPA_8 != '0' :
                 countunit+=1
     else:
         countunit+=1
@@ -915,21 +917,21 @@ def fourthTermResult(request):
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
         for unit in dataGPA:
-            if unit.GPA_1 != "0" :
+            if unit.GPA_1 != '0' :
                 countunit+=1
-            if unit.GPA_2 != "0" :
+            if unit.GPA_2 != '0' :
                 countunit+=1
-            if unit.GPA_3 != "0" :
+            if unit.GPA_3 != '0' :
                 countunit+=1
-            if unit.GPA_4 != "0" :
+            if unit.GPA_4 != '0' :
                 countunit+=1
-            if unit.GPA_5 != "0" :
+            if unit.GPA_5 != '0' :
                 countunit+=1
-            if unit.GPA_6 != "0" :
+            if unit.GPA_6 != '0' :
                 countunit+=1
-            if unit.GPA_7 != "0" :
+            if unit.GPA_7 != '0' :
                 countunit+=1
-            if unit.GPA_8 != "0" :
+            if unit.GPA_8 != '0' :
                 countunit+=1
     else:
         countunit+=1
@@ -946,21 +948,21 @@ def fifthTermResult(request):
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
         for unit in dataGPA:
-            if unit.GPA_1 != "0" :
+            if unit.GPA_1 != '0' :
                 countunit+=1
-            if unit.GPA_2 != "0" :
+            if unit.GPA_2 != '0' :
                 countunit+=1
-            if unit.GPA_3 != "0" :
+            if unit.GPA_3 != '0' :
                 countunit+=1
-            if unit.GPA_4 != "0" :
+            if unit.GPA_4 != '0' :
                 countunit+=1
-            if unit.GPA_5 != "0" :
+            if unit.GPA_5 != '0' :
                 countunit+=1
-            if unit.GPA_6 != "0" :
+            if unit.GPA_6 != '0' :
                 countunit+=1
-            if unit.GPA_7 != "0" :
+            if unit.GPA_7 != '0' :
                 countunit+=1
-            if unit.GPA_8 != "0" :
+            if unit.GPA_8 != '0' :
                 countunit+=1
     else:
         countunit+=1
@@ -977,21 +979,21 @@ def sixthTermResult(request):
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
         for unit in dataGPA:
-            if unit.GPA_1 != "0" :
+            if unit.GPA_1 != '0' :
                 countunit+=1
-            if unit.GPA_2 != "0" :
+            if unit.GPA_2 != '0' :
                 countunit+=1
-            if unit.GPA_3 != "0" :
+            if unit.GPA_3 != '0' :
                 countunit+=1
-            if unit.GPA_4 != "0" :
+            if unit.GPA_4 != '0' :
                 countunit+=1
-            if unit.GPA_5 != "0" :
+            if unit.GPA_5 != '0' :
                 countunit+=1
-            if unit.GPA_6 != "0" :
+            if unit.GPA_6 != '0' :
                 countunit+=1
-            if unit.GPA_7 != "0" :
+            if unit.GPA_7 != '0' :
                 countunit+=1
-            if unit.GPA_8 != "0" :
+            if unit.GPA_8 != '0' :
                 countunit+=1
     else:
         countunit+=1
@@ -1008,21 +1010,21 @@ def seventhTermResult(request):
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
         for unit in dataGPA:
-            if unit.GPA_1 != "0" :
+            if unit.GPA_1 != '0' :
                 countunit+=1
-            if unit.GPA_2 != "0" :
+            if unit.GPA_2 != '0' :
                 countunit+=1
-            if unit.GPA_3 != "0" :
+            if unit.GPA_3 != '0' :
                 countunit+=1
-            if unit.GPA_4 != "0" :
+            if unit.GPA_4 != '0' :
                 countunit+=1
-            if unit.GPA_5 != "0" :
+            if unit.GPA_5 != '0' :
                 countunit+=1
-            if unit.GPA_6 != "0" :
+            if unit.GPA_6 != '0' :
                 countunit+=1
-            if unit.GPA_7 != "0" :
+            if unit.GPA_7 != '0' :
                 countunit+=1
-            if unit.GPA_8 != "0" :
+            if unit.GPA_8 != '0' :
                 countunit+=1
     else:
         countunit+=1
@@ -1039,21 +1041,21 @@ def eightTermResult(request):
         GPAX = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if GPAX > 0.0:
         for unit in dataGPA:
-            if unit.GPA_1 != "0" :
+            if unit.GPA_1 != '0' :
                 countunit+=1
-            if unit.GPA_2 != "0" :
+            if unit.GPA_2 != '0' :
                 countunit+=1
-            if unit.GPA_3 != "0" :
+            if unit.GPA_3 != '0' :
                 countunit+=1
-            if unit.GPA_4 != "0" :
+            if unit.GPA_4 != '0' :
                 countunit+=1
-            if unit.GPA_5 != "0" :
+            if unit.GPA_5 != '0' :
                 countunit+=1
-            if unit.GPA_6 != "0" :
+            if unit.GPA_6 != '0' :
                 countunit+=1
-            if unit.GPA_7 != "0" :
+            if unit.GPA_7 != '0' :
                 countunit+=1
-            if unit.GPA_8 != "0" :
+            if unit.GPA_8 != '0' :
                 countunit+=1
     else:
         countunit+=1
