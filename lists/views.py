@@ -33,7 +33,7 @@ def userCount(request):
         'count': count
     })
 
-# สมัครสมาชิก
+# สมัครสมาชิกโดยการใช้ฟอร์มของ Django ที่มีมาให้
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
