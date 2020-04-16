@@ -11,7 +11,7 @@ from lists.models import Userinfo
 def home_page(request):
     return render(request, 'home.html')
 
-# เรียกไฟล์ picFlow.html เพื่อทำการ render
+# เรียกไฟล์ picFlow.html เพื่อทำการ render โดยหน้า picFlow จะเป็นหน้ารูปของแผนผังวิชาต่างๆ
 def picFlow(request):
     return render(request, 'picFlow.html')
 
@@ -23,8 +23,8 @@ def about(request):
 def help(request):
     return render(request, 'help.html')
 
-# เมื่อทำการสมัครสมาชิกจะทำการส่งจำนวนสมาชิกทั้งหมดไปให้หน้า index.html
-def register(request):
+# ส่งจำนวนสมาชิกทั้งหมดเพื่อทำการ render
+def userCount(request):
     dataGPA = GPA.objects.all()
     if len(dataGPA) == 0:
         GPA.objects.create(GPA_1=0, GPA_2=0, GPA_3=0, GPA_4=0, GPA_5=0, GPA_6=0, GPA_7=0, GPA_8=0, )
