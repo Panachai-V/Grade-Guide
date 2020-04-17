@@ -53,7 +53,7 @@ def signup(request):
         'form': form
     })
 
-# ส่วนของการคิดเกรดและบันทึกเกรด
+# ส่วนของหน้า grade calculator จะบันทึกเกรดโดยแก้ไขเกรด
 def cal_grade(request):
     term1 = Term1()
     term2 = Term2()
