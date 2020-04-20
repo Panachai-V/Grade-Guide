@@ -10,7 +10,7 @@ urlpatterns = [
     path('', views.user_count, name='userCount'),
     path('calGrade', views.cal_grade,name='calGrade'),
     path('admin/', admin.site.urls),
-    path('signup', views.signup, name='signup'),
+    path('signup', views.sign_up, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
     url(r'home', views.home_page, name='home'),
     url(r'flow', views.flow, name='flow'),
