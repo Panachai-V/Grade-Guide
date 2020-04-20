@@ -34,9 +34,11 @@ def user_count(request):
     })
 
 # สมัครสมาชิกโดยการใช้ฟอร์มของ Django ที่มีมาให้
-def signup(request):
+def sign_up(request):
+    # เมือมีการมีการ POST
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
+        # จะทำการเช็คว่ามี user นี้หรือยัง
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()
@@ -47,6 +49,7 @@ def signup(request):
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             return redirect('home')
+    # จะทำการใช้ UserCreationForm() โดยอัตโนมัติ เมื่อเข้าหน้า sign up
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {
