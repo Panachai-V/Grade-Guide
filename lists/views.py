@@ -25,11 +25,7 @@ def help(request):
 
 # ส่งจำนวนสมาชิกทั้งหมดเพื่อทำการ render
 def user_count(request):
-    dataGPA = GPA.objects.all()
-    # เมื่อไม่มีข้อมูล GPA
-    if len(dataGPA) == 0:
-        # จะทำการสร้้างออบเจ็ค gpa ในแต่ละเทอมขึ้นมาเท่ากับ 0
-        GPA.objects.create(GPA_1=0, GPA_2=0, GPA_3=0, GPA_4=0, GPA_5=0, GPA_6=0, GPA_7=0, GPA_8=0, )
+
     # นับจำนวน user ทั้งหมดเพื่อดูว่าเว็บของเราเป็นทีนิยมขนาดไหน
     count = User.objects.count()
     return render(request, 'index.html', {
@@ -51,6 +47,11 @@ def sign_up(request):
             user.save()
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            dataGPA = GPA.objects.all()
+            # เมื่อไม่มีข้อมูล GPA
+            if len(dataGPA) == 0:
+                # จะทำการสร้้างออบเจ็ค gpa ในแต่ละเทอมขึ้นมาเท่ากับ 0
+                GPA.objects.create(GPA_1=0, GPA_2=0, GPA_3=0, GPA_4=0, GPA_5=0, GPA_6=0, GPA_7=0, GPA_8=0, )
             return redirect('home')
     # จะทำการใช้ UserCreationForm() โดยอัตโนมัติ เมื่อเข้าหน้า sign up
     else:
