@@ -10,7 +10,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="/">GRADGUIDE</a>
+  <head_text><a class="navbar-brand" href="/"><gradguide_link>GRADEGUIDE</gradguide_link></a></head_text>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -18,19 +18,19 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="r'flow'">FLOW</a>
+        <a class="nav-link" href="r'flow'"><flow_link>FLOW</flow_link></a>
       </li>
           <li class="nav-item">
-        <a class="nav-link" href="r'about'">ABOUT</a>
+            <a class="nav-link" href="r'about'"><about_link>ABOUT</about_link></a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" href="r'help'">HELP</a>
+          <a class="nav-link" href="r'help'"><help_link>HELP</help_link></a>
       </li>
     </ul>
       {% if user.is_authenticated %}
       <ul class="navbar-nav">
       <li class="nav-item gradecal">
-        <a class="nav-link" href="home">GRADECAL CULATOR <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="home">GRADE CALCULATOR <span class="sr-only">(current)</span></a>
       </li>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,16 +53,16 @@
       </li>
 
       <li class="nav-item sigup">
-        <a class="nav-link" href="{% url 'logout' %}">LOGOUT <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'logout' %}">LOGOUT<span class="sr-only">(current)</span></a>
       </li>
       </ul>
     {% else %}
       <ul class="navbar-nav">
           <li class="nav-item sigup">
-        <a class="nav-link" href="{% url 'signup' %}">SIGNUP <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'signup' %}"><signup_link>SIGN UP</signup_link><span class="sr-only">(current)</span></a>
       </li>
           <li class="nav-item login">
-        <a class="nav-link" href="{% url 'login' %}">LOGIN <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'login' %}"><login_link>LOG IN</login_link><span class="sr-only">(current)</span></a>
       </li>
       </ul>
 
