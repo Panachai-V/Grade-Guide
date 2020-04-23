@@ -262,21 +262,32 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('jesselingard', id_user)
 
         # เขาใส่ unit
-        select_unit = Select(self.browser.find_element_by_id('subject1Unitid'))
-        select_unit.select_by_visible_text('Unit: 2')
+        select_unit_1 = Select(self.browser.find_element_by_id('subject1Unitid'))
+        select_unit_1.select_by_visible_text('Unit: 2')
+        select_unit_2 = Select(self.browser.find_element_by_id('subject2Unitid'))
+        select_unit_2.select_by_visible_text('Unit: 3')
+        select_unit_3 = Select(self.browser.find_element_by_id('subject3Unitid'))
+        select_unit_3.select_by_visible_text('Unit: 4')
+        select_unit_4 = Select(self.browser.find_element_by_id('subject4Unitid'))
+        select_unit_4.select_by_visible_text('Unit: 1')
         time.sleep(5)
 
         # เขาใส่ Grade
-
-        select_grade = Select(self.browser.find_element_by_id('subject1Gradeid'))
-        select_grade.select_by_value('2.5')
+        select_grade_1 = Select(self.browser.find_element_by_id('subject1Gradeid'))
+        select_grade_1.select_by_value('4')
+        select_grade_2 = Select(self.browser.find_element_by_id('subject2Gradeid'))
+        select_grade_2.select_by_value('3.5')
+        select_grade_3 = Select(self.browser.find_element_by_id('subject3Gradeid'))
+        select_grade_3.select_by_value('0')
+        select_grade_4 = Select(self.browser.find_element_by_id('subject4Gradeid'))
+        select_grade_4.select_by_value('1.5')
         time.sleep(5)
 
         # เขาเห็นเกรดแสดงขึ้นมา
         submit_button = self.browser.find_element_by_tag_name('calculate_button')
         submit_button.click()
         grade_result = self.browser.find_element_by_tag_name('grade_result').text
-        self.assertIn('2.5', grade_result)
+        self.assertIn('2.00', grade_result)
 
 
         # เขาเห็นสาถานะนักศึกษาของเขา
