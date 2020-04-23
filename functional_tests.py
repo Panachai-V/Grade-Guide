@@ -457,6 +457,7 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('Engineering Mathmetic I', check_result)
 
         time.sleep(2)
+        self.fail('Finish the test!')
 
 
 
