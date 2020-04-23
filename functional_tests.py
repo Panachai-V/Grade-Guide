@@ -220,9 +220,82 @@ class NewVisitorTest(unittest.TestCase):
     #     flow_image = self.browser.find_element_by_id('image')
     #     self.assertEqual(flow_image.get_attribute('id'),'image')
     #     self.fail('Finish the test!')
+    #
+    #
+    # def test_submit_grade(self):
+    #     # เมื่อเขากดเข้าไปที่หน้า signup
+    #     self.browser.get('http://localhost:8000/signup')
+    #     username_box = self.browser.find_element_by_id('id_username')
+    #     password_box = self.browser.find_element_by_id('id_password1')
+    #     password_box2 = self.browser.find_element_by_id('id_password2')
+    #
+    #     # เขาทำการสมัคร username jesselingard
+    #     # password lingard123456789
+    #     # password2 lingard123456789
+    #     username_box.send_keys('jesselingard')
+    #     password_box.send_keys('lingard123456789')
+    #     password_box2.send_keys('lingard123456789')
+    #
+    #     # เขาทำการกดปุ่ม signup
+    #     signup_button = self.browser.find_element_by_tag_name('signup_button')
+    #     signup_button.click()
+    #
+    #     # เขาเข้าไปที่หน้า login
+    #     self.browser.get('http://127.0.0.1:8000/accounts/login/')
+    #     header_text = self.browser.find_element_by_tag_name('h2').text
+    #     self.assertIn('Log in', header_text)
+    #
+    #     # เขาใส่ id password
+    #     username_login_box = self.browser.find_element_by_id('id_username')
+    #     password_login_box = self.browser.find_element_by_id('id_password')
+    #     username_login_box.send_keys('jesselingard')
+    #     password_login_box.send_keys('lingard123456789')
+    #
+    #     # เขากดปุ่ม login
+    #     login_button = self.browser.find_element_by_tag_name('login_button')
+    #     login_button.click()
+    #     time.sleep(2)
+    #
+    #     # เขาเข้าไปที่หน้า homepage
+    #     self.browser.get('http://127.0.0.1:8000/home')
+    #     id_user = self.browser.find_element_by_tag_name('id_text').text
+    #     self.assertIn('jesselingard', id_user)
+    #
+    #     # เขาใส่ unit
+    #     select_unit_1 = Select(self.browser.find_element_by_id('subject1Unitid'))
+    #     select_unit_1.select_by_visible_text('Unit: 2')
+    #     select_unit_2 = Select(self.browser.find_element_by_id('subject2Unitid'))
+    #     select_unit_2.select_by_visible_text('Unit: 3')
+    #     select_unit_3 = Select(self.browser.find_element_by_id('subject3Unitid'))
+    #     select_unit_3.select_by_visible_text('Unit: 4')
+    #     select_unit_4 = Select(self.browser.find_element_by_id('subject4Unitid'))
+    #     select_unit_4.select_by_visible_text('Unit: 1')
+    #
+    #
+    #     # เขาใส่ Grade
+    #     select_grade_1 = Select(self.browser.find_element_by_id('subject1Gradeid'))
+    #     select_grade_1.select_by_value('4')
+    #     select_grade_2 = Select(self.browser.find_element_by_id('subject2Gradeid'))
+    #     select_grade_2.select_by_value('3.5')
+    #     select_grade_3 = Select(self.browser.find_element_by_id('subject3Gradeid'))
+    #     select_grade_3.select_by_value('0')
+    #     select_grade_4 = Select(self.browser.find_element_by_id('subject4Gradeid'))
+    #     select_grade_4.select_by_value('1.5')
+    #
+    #
+    #     # เขาเห็นเกรดแสดงขึ้นมา
+    #     submit_button = self.browser.find_element_by_tag_name('calculate_button')
+    #     submit_button.click()
+    #     grade_result = self.browser.find_element_by_tag_name('grade_result').text
+    #     self.assertIn('2.00', grade_result)
+    #
+    #
+    #     # เขาเห็นสาถานะนักศึกษาของเขา
+    #     state_result = self.browser.find_element_by_tag_name('state_result').text
+    #     self.assertIn('Normal State', state_result)
+    #     self.fail('Finish the test!')
 
-
-    def test_submit_grade(self):
+    def test_student_state(self):
         # เมื่อเขากดเข้าไปที่หน้า signup
         self.browser.get('http://localhost:8000/signup')
         username_box = self.browser.find_element_by_id('id_username')
@@ -262,38 +335,40 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('jesselingard', id_user)
 
         # เขาใส่ unit
-        select_unit_1 = Select(self.browser.find_element_by_id('subject1Unitid'))
-        select_unit_1.select_by_visible_text('Unit: 2')
-        select_unit_2 = Select(self.browser.find_element_by_id('subject2Unitid'))
-        select_unit_2.select_by_visible_text('Unit: 3')
-        select_unit_3 = Select(self.browser.find_element_by_id('subject3Unitid'))
-        select_unit_3.select_by_visible_text('Unit: 4')
-        select_unit_4 = Select(self.browser.find_element_by_id('subject4Unitid'))
-        select_unit_4.select_by_visible_text('Unit: 1')
-        time.sleep(5)
+        select_unit = Select(self.browser.find_element_by_id('subject1Unitid'))
+        select_unit.select_by_visible_text('Unit: 2')
 
         # เขาใส่ Grade
         select_grade_1 = Select(self.browser.find_element_by_id('subject1Gradeid'))
         select_grade_1.select_by_value('4')
-        select_grade_2 = Select(self.browser.find_element_by_id('subject2Gradeid'))
-        select_grade_2.select_by_value('3.5')
-        select_grade_3 = Select(self.browser.find_element_by_id('subject3Gradeid'))
-        select_grade_3.select_by_value('0')
-        select_grade_4 = Select(self.browser.find_element_by_id('subject4Gradeid'))
-        select_grade_4.select_by_value('1.5')
-        time.sleep(5)
-
-        # เขาเห็นเกรดแสดงขึ้นมา
+        # เขากดปุ่ม submit
         submit_button = self.browser.find_element_by_tag_name('calculate_button')
         submit_button.click()
-        grade_result = self.browser.find_element_by_tag_name('grade_result').text
-        self.assertIn('2.00', grade_result)
-
-
         # เขาเห็นสาถานะนักศึกษาของเขา
         state_result = self.browser.find_element_by_tag_name('state_result').text
         self.assertIn('Normal State', state_result)
-        self.fail('Finish the test!')
+
+        # เขาใส่ Grade
+        select_grade_1 = Select(self.browser.find_element_by_id('subject1Gradeid'))
+        select_grade_1.select_by_value('1.5')
+        # เขากดปุ่ม submit
+        submit_button = self.browser.find_element_by_tag_name('calculate_button')
+        submit_button.click()
+        # เขาเห็นสาถานะนักศึกษาของเขา
+        state_result = self.browser.find_element_by_tag_name('state_result').text
+        self.assertIn('Probation', state_result)
+
+        # เขาใส่ Grade
+        select_grade_1 = Select(self.browser.find_element_by_id('subject1Gradeid'))
+        select_grade_1.select_by_value('0')
+        # เขากดปุ่ม submit
+        submit_button = self.browser.find_element_by_tag_name('calculate_button')
+        submit_button.click()
+        # เขาเห็นสาถานะนักศึกษาของเขา
+        state_result = self.browser.find_element_by_tag_name('state_result').text
+        self.assertIn('Retired', state_result)
+
+    
 
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
