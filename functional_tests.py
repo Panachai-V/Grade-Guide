@@ -80,7 +80,7 @@ class NewVisitorTest(unittest.TestCase):
         login_button = self.browser.find_element_by_tag_name("button")
         self.assertEqual(login_button.get_attribute('type'),'button')
 
-        self.fail('Finish the test!')
+        # self.fail('Finish the test!')
 
     def test_login_fail(self):
         # เขาเข้าไปที่หน้า login
@@ -101,7 +101,7 @@ class NewVisitorTest(unittest.TestCase):
         # เขาไม่สามารถ log in ได้
         error_message = self.browser.find_element_by_tag_name('test_tag').text
         self.assertIn('Please enter a correct username and password. Note that both fields may be case-sensitive.',error_message)
-        self.fail('Finish the test!')
+        # self.fail('Finish the test!')
 
 
     def test_user_can_signup_and_login(self):
@@ -294,23 +294,6 @@ class NewVisitorTest(unittest.TestCase):
         # self.fail('Finish the test!')
 
     def test_student_state(self):
-        # เมื่อเขากดเข้าไปที่หน้า signup
-        self.browser.get('http://localhost:8000/signup')
-        username_box = self.browser.find_element_by_id('id_username')
-        password_box = self.browser.find_element_by_id('id_password1')
-        password_box2 = self.browser.find_element_by_id('id_password2')
-
-        # เขาทำการสมัคร username jesselingard
-        # password lingard123456789
-        # password2 lingard123456789
-        username_box.send_keys('jesselingard')
-        password_box.send_keys('lingard123456789')
-        password_box2.send_keys('lingard123456789')
-
-        # เขาทำการกดปุ่ม signup
-        signup_button = self.browser.find_element_by_tag_name('signup_button')
-        signup_button.click()
-
         # เขาเข้าไปที่หน้า login
         self.browser.get('http://127.0.0.1:8000/accounts/login/')
         header_text = self.browser.find_element_by_tag_name('h2').text
@@ -368,23 +351,6 @@ class NewVisitorTest(unittest.TestCase):
         # self.fail('Finish the test!')
 
     def test_save_grade(self):
-        # เมื่อเขากดเข้าไปที่หน้า signup
-        self.browser.get('http://localhost:8000/signup')
-        username_box = self.browser.find_element_by_id('id_username')
-        password_box = self.browser.find_element_by_id('id_password1')
-        password_box2 = self.browser.find_element_by_id('id_password2')
-
-        # เขาทำการสมัคร username jesselingard
-        # password lingard123456789
-        # password2 lingard123456789
-        username_box.send_keys('jesselingard')
-        password_box.send_keys('lingard123456789')
-        password_box2.send_keys('lingard123456789')
-
-        # เขาทำการกดปุ่ม signup
-        signup_button = self.browser.find_element_by_tag_name('signup_button')
-        signup_button.click()
-
         # เขาเข้าไปที่หน้า login
         self.browser.get('http://127.0.0.1:8000/accounts/login/')
         header_text = self.browser.find_element_by_tag_name('h2').text
