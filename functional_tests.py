@@ -82,7 +82,7 @@ class NewVisitorTest(unittest.TestCase):
 
         # self.fail('Finish the test!')
 
-    def test_login_fail(self):
+    def test_user_login_fail(self):
         # เขาเข้าไปที่หน้า login
         self.browser.get('http://127.0.0.1:8000/accounts/login/')
         header_text = self.browser.find_element_by_tag_name('h2').text
@@ -145,7 +145,7 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('jesselingard', id_user)
         # self.fail('Finish the test!')
 
-    def test_subjects_button_flow(self):
+    def test_can_click_subjects_button_flow(self):
         # เธอคลิกเข้ามาที่ link flow
         self.browser.get('http://localhost:8000/flow.html')
 
@@ -166,7 +166,7 @@ class NewVisitorTest(unittest.TestCase):
         subject_button.click()
         # self.fail('Finish the test!')
 
-    def test_search_flow(self):
+    def test_search_subject(self):
         # เธอคลิกเข้ามาที่ link flow
         self.browser.get('http://localhost:8000/flow.html')
 
@@ -204,7 +204,7 @@ class NewVisitorTest(unittest.TestCase):
         self.assertEqual('Note : Elective Subjects don\'t connect to each other but I want to show how many elective subjects are in this flow.', note)
         # self.fail('Finish the test!')
 
-    def test_flow_pic(self):
+    def test_show_subject_flow_chart_picture(self):
         # เธอคลิกเข้ามาที่ link flow
         self.browser.get('http://localhost:8000/flow.html')
 
@@ -222,7 +222,7 @@ class NewVisitorTest(unittest.TestCase):
         # self.fail('Finish the test!')
 
 
-    def test_submit_grade(self):
+    def test_submit_grade_to_calculate(self):
         # เมื่อเขากดเข้าไปที่หน้า signup
         self.browser.get('http://localhost:8000/signup')
         username_box = self.browser.find_element_by_id('id_username')
@@ -293,7 +293,7 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('Normal State', state_result)
         # self.fail('Finish the test!')
 
-    def test_student_state(self):
+    def test_show_student_state(self):
         # เขาเข้าไปที่หน้า login
         self.browser.get('http://127.0.0.1:8000/accounts/login/')
         header_text = self.browser.find_element_by_tag_name('h2').text
@@ -350,7 +350,7 @@ class NewVisitorTest(unittest.TestCase):
 
         # self.fail('Finish the test!')
 
-    def test_save_grade(self):
+    def test_save_grade_and_check_results(self):
         # เขาเข้าไปที่หน้า login
         self.browser.get('http://127.0.0.1:8000/accounts/login/')
         header_text = self.browser.find_element_by_tag_name('h2').text
@@ -425,7 +425,7 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('4', check_result)
         self.assertIn('1', check_result)
 
-        # เขาเช็คชื่อเกรด
+        # เขาเช็คเกรด
         self.assertIn('4', check_result)
         self.assertIn('3.5', check_result)
         self.assertIn('1', check_result)
