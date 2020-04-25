@@ -5,9 +5,16 @@
     <hr>
     <body>
         <p>{% if user.is_authenticated %}
-        <id_text>ID : {{ user.username }} {{ test }}</id_text>
+        <id_text>ID : {{ user.username }} {{ test }} </id_text>
             {% else %}visitor{% endif %}</p>
         <hr>
+        {% for itemlist in test_res %}
+        {{itemlist.term}}
+        {{itemlist.subject}}
+        {{itemlist.unit}}
+        {{itemlist.Grade}}<br>
+        {% endfor %}
+
         <br>
         <p><font size="5" color="B03A2E">{{message}}</font></p>
 <form action="calGrade" method="POST" >
