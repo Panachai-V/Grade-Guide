@@ -73,7 +73,7 @@ def cal_grade(request):
                  float(request.POST.get('subject7Unit')) + float(request.POST.get('subject7Grade'))+\
                  float(request.POST.get('subject8Unit')) + float(request.POST.get('subject8Grade'))+\
                  float(request.POST.get('subject9Unit')) + float(request.POST.get('subject9Grade'))
-    if len(Term1.objects.all()) <= 9:
+    if len(Term.objects.all()) <= 100:
         # ถ้าผู้ใช้เลือกเทอมที่ 1
         if request.POST.get('subjectTerm') == '1':
             # ถ้าไม่ได้กรอกข้อมูลอะไรไปเลยจะแสดงผลเป็นคำว่า 'Plese check your infromation before saving.'
@@ -467,10 +467,19 @@ def cal_grade(request):
                 # Term8.objects.create(subject=request.POST['subject8name'],unit=request.POST['subject8Unit'],Grade=request.POST['subject8Grade'])
                 # Term8.objects.create(subject=request.POST['subject9name'],unit=request.POST['subject9Unit'],Grade=request.POST['subject9Grade'])
                 GPA.objects.filter(pk=1).update(GPA_8=gpa_result)
-                return render(request, 'home.html',{'result':gpa_result,'test_res':test_res})
+                return render(request, 'home.html',{'result':gpa_result})
             # แก้ไขเกรด
             else:
-                Term.objects.create(term = request.POST['subjectTerm'],subject=request.POST['subject1name'], unit=request.POST['subject1Unit'],Grade=request.POST['subject1Grade'])
+                Term.objects.filter(term="8").all().delete()
+                Term.objects.create(term = request.POST['subjectTerm'],subject=request.POST['subject1name'],unit=request.POST['subject1Unit'],Grade=request.POST['subject1Grade'])
+                Term.objects.create(term = request.POST['subjectTerm'],subject=request.POST['subject2name'],unit=request.POST['subject2Unit'],Grade=request.POST['subject2Grade'])
+                Term.objects.create(term = request.POST['subjectTerm'],subject=request.POST['subject3name'],unit=request.POST['subject3Unit'],Grade=request.POST['subject3Grade'])
+                Term.objects.create(term = request.POST['subjectTerm'],subject=request.POST['subject4name'],unit=request.POST['subject4Unit'],Grade=request.POST['subject4Grade'])
+                Term.objects.create(term = request.POST['subjectTerm'],subject=request.POST['subject5name'],unit=request.POST['subject5Unit'],Grade=request.POST['subject5Grade'])
+                Term.objects.create(term = request.POST['subjectTerm'],subject=request.POST['subject6name'],unit=request.POST['subject6Unit'],Grade=request.POST['subject6Grade'])
+                Term.objects.create(term = request.POST['subjectTerm'],subject=request.POST['subject7name'],unit=request.POST['subject7Unit'],Grade=request.POST['subject7Grade'])
+                Term.objects.create(term = request.POST['subjectTerm'],subject=request.POST['subject8name'],unit=request.POST['subject8Unit'],Grade=request.POST['subject8Grade'])
+                Term.objects.create(term = request.POST['subjectTerm'],subject=request.POST['subject9name'],unit=request.POST['subject9Unit'],Grade=request.POST['subject9Grade'])
                 # Term8.objects.filter(pk=1).update(subject=request.POST['subject1name'],unit=request.POST['subject1Unit'],Grade=request.POST['subject1Grade'])
                 # Term8.objects.filter(pk=2).update(subject=request.POST['subject2name'],unit=request.POST['subject2Unit'],Grade=request.POST['subject2Grade'])
                 # Term8.objects.filter(pk=3).update(subject=request.POST['subject3name'],unit=request.POST['subject3Unit'],Grade=request.POST['subject3Grade'])
@@ -481,8 +490,7 @@ def cal_grade(request):
                 # Term8.objects.filter(pk=8).update(subject=request.POST['subject8name'],unit=request.POST['subject8Unit'],Grade=request.POST['subject8Grade'])
                 # Term8.objects.filter(pk=9).update(subject=request.POST['subject9name'],unit=request.POST['subject9Unit'],Grade=request.POST['subject9Grade'])
                 GPA.objects.filter(pk=1).update(GPA_8=gpa_result)
-                test_res = Term.objects.all()
-                return render(request, 'home.html',{'result':gpa_result,'test_res':test_res})
+                return render(request, 'home.html',{'result':gpa_result})
         else:
             message = 'Please select term before saving grade'
             return render(request, 'home.html',{'message':message})
