@@ -99,8 +99,8 @@ def cal_grade(request):
             gpa_result = sum_multi_subject / sum_unit
             # บันทึกเกรด
             # บันทึกเกรด
-            if len(Term.objects.filter(term="3")) == 0 :
-                GPA.objects.update(GPA_3=gpa_result)
+            if len(Term.objects.filter(term="1")) == 0 :
+                GPA.objects.update(GPA_1=gpa_result)
                 Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject1name'],
                                     unit=request.POST['subject1Unit'], Grade=request.POST['subject1Grade'])
                 Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject2name'],
@@ -122,8 +122,8 @@ def cal_grade(request):
                 return render(request, 'home.html',{'result':gpa_result})
             # แก้ไขเกรด
             else:
-                Term.objects.filter(term="3").all().delete()
-                GPA.objects.update(GPA_3=gpa_result)
+                Term.objects.filter(term="1").all().delete()
+                GPA.objects.update(GPA_1=gpa_result)
                 Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject1name'],
                                     unit=request.POST['subject1Unit'], Grade=request.POST['subject1Grade'])
                 Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject2name'],
