@@ -21,7 +21,7 @@ class Term(models.Model):
     subject = models.CharField(max_length=255)
     unit = models.CharField(max_length=255)
     Grade = models.CharField(max_length=255)
-    GPA = models.CharField(max_length=255)
+    # GPA = models.CharField(max_length=255)
 # class Term1(models.Model):
 #     subject = models.CharField(max_length=255)
 #     unit = models.CharField(max_length=255)

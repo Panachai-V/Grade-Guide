@@ -6,7 +6,7 @@
     <body>
         <p>{% if user.is_authenticated %}
         <id_text>ID : {{ user.username }} {{ test }} </id_text>
-            {% else %}visitor{% endif %}</p>
+            {% else %}visitor{% endif %}</p>{{test}}
         <hr>
         {% for itemlist in test_res %}
         {{itemlist.term}}
