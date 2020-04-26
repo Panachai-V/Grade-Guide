@@ -98,30 +98,50 @@ def cal_grade(request):
             sum_multi_subject = multi_subject_1 + multi_subject_2 + multi_subject_3 + multi_subject_4 + multi_subject_5 + multi_subject_6 + multi_subject_7 + multi_subject_8 + multi_subject_9
             gpa_result = sum_multi_subject / sum_unit
             # บันทึกเกรด
-            if len(Term1.objects.all()) == 0 :
-                Term1.objects.create(subject=request.POST['subject1name'],unit=request.POST['subject1Unit'],Grade=request.POST['subject1Grade'])
-                Term1.objects.create(subject=request.POST['subject2name'],unit=request.POST['subject2Unit'],Grade=request.POST['subject2Grade'])
-                Term1.objects.create(subject=request.POST['subject3name'],unit=request.POST['subject3Unit'],Grade=request.POST['subject3Grade'])
-                Term1.objects.create(subject=request.POST['subject4name'],unit=request.POST['subject4Unit'],Grade=request.POST['subject4Grade'])
-                Term1.objects.create(subject=request.POST['subject5name'],unit=request.POST['subject5Unit'],Grade=request.POST['subject5Grade'])
-                Term1.objects.create(subject=request.POST['subject6name'],unit=request.POST['subject6Unit'],Grade=request.POST['subject6Grade'])
-                Term1.objects.create(subject=request.POST['subject7name'],unit=request.POST['subject7Unit'],Grade=request.POST['subject7Grade'])
-                Term1.objects.create(subject=request.POST['subject8name'],unit=request.POST['subject8Unit'],Grade=request.POST['subject8Grade'])
-                Term1.objects.create(subject=request.POST['subject9name'],unit=request.POST['subject9Unit'],Grade=request.POST['subject9Grade'])
-                GPA.objects.filter(pk=1).update(GPA_1=gpa_result)
+            # บันทึกเกรด
+            if len(Term.objects.filter(term="3")) == 0 :
+                GPA.objects.update(GPA_3=gpa_result)
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject1name'],
+                                    unit=request.POST['subject1Unit'], Grade=request.POST['subject1Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject2name'],
+                                    unit=request.POST['subject2Unit'], Grade=request.POST['subject2Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject3name'],
+                                    unit=request.POST['subject3Unit'], Grade=request.POST['subject3Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject4name'],
+                                    unit=request.POST['subject4Unit'], Grade=request.POST['subject4Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject5name'],
+                                    unit=request.POST['subject5Unit'], Grade=request.POST['subject5Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject6name'],
+                                    unit=request.POST['subject6Unit'], Grade=request.POST['subject6Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject7name'],
+                                    unit=request.POST['subject7Unit'], Grade=request.POST['subject7Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject8name'],
+                                    unit=request.POST['subject8Unit'], Grade=request.POST['subject8Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject9name'],
+                                    unit=request.POST['subject9Unit'], Grade=request.POST['subject9Grade'])
                 return render(request, 'home.html',{'result':gpa_result})
             # แก้ไขเกรด
             else:
-                Term1.objects.filter(pk=1).update(subject =request.POST['subject1name'], unit=request.POST['subject1Unit'],Grade=request.POST['subject1Grade'])
-                Term1.objects.filter(pk=2).update(subject =request.POST['subject2name'], unit=request.POST['subject2Unit'],Grade=request.POST['subject2Grade'])
-                Term1.objects.filter(pk=3).update(subject =request.POST['subject3name'], unit=request.POST['subject3Unit'],Grade=request.POST['subject3Grade'])
-                Term1.objects.filter(pk=4).update(subject =request.POST['subject4name'], unit=request.POST['subject4Unit'],Grade=request.POST['subject4Grade'])
-                Term1.objects.filter(pk=5).update(subject =request.POST['subject5name'], unit=request.POST['subject5Unit'],Grade=request.POST['subject5Grade'])
-                Term1.objects.filter(pk=6).update(subject =request.POST['subject6name'], unit=request.POST['subject6Unit'],Grade=request.POST['subject6Grade'])
-                Term1.objects.filter(pk=7).update(subject =request.POST['subject7name'], unit=request.POST['subject7Unit'],Grade=request.POST['subject7Grade'])
-                Term1.objects.filter(pk=8).update(subject =request.POST['subject8name'], unit=request.POST['subject8Unit'],Grade=request.POST['subject8Grade'])
-                Term1.objects.filter(pk=9).update(subject =request.POST['subject9name'], unit=request.POST['subject9Unit'],Grade=request.POST['subject9Grade'])
-                GPA.objects.filter(pk=1).update(GPA_1=gpa_result)
+                Term.objects.filter(term="3").all().delete()
+                GPA.objects.update(GPA_3=gpa_result)
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject1name'],
+                                    unit=request.POST['subject1Unit'], Grade=request.POST['subject1Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject2name'],
+                                    unit=request.POST['subject2Unit'], Grade=request.POST['subject2Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject3name'],
+                                    unit=request.POST['subject3Unit'], Grade=request.POST['subject3Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject4name'],
+                                    unit=request.POST['subject4Unit'], Grade=request.POST['subject4Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject5name'],
+                                    unit=request.POST['subject5Unit'], Grade=request.POST['subject5Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject6name'],
+                                    unit=request.POST['subject6Unit'], Grade=request.POST['subject6Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject7name'],
+                                    unit=request.POST['subject7Unit'], Grade=request.POST['subject7Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject8name'],
+                                    unit=request.POST['subject8Unit'], Grade=request.POST['subject8Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject9name'],
+                                    unit=request.POST['subject9Unit'], Grade=request.POST['subject9Grade'])
                 return render(request, 'home.html',{'result':gpa_result})
 
         # ถ้าผู้ใช้เลือกเทอมที่ 2
@@ -147,29 +167,50 @@ def cal_grade(request):
                 request.POST.get('subject9Unit'))
             sum_multi_subject = multi_subject_1 + multi_subject_2 + multi_subject_3 + multi_subject_4 + multi_subject_5 + multi_subject_6 + multi_subject_7 + multi_subject_8 + multi_subject_9
             gpa_result = sum_multi_subject / sum_unit
-            if len(Term2.objects.all()) == 0 :
-                Term2.objects.create(subject=request.POST['subject1name'],unit=request.POST['subject1Unit'],Grade=request.POST['subject1Grade'])
-                Term2.objects.create(subject=request.POST['subject2name'],unit=request.POST['subject2Unit'],Grade=request.POST['subject2Grade'])
-                Term2.objects.create(subject=request.POST['subject3name'],unit=request.POST['subject3Unit'],Grade=request.POST['subject3Grade'])
-                Term2.objects.create(subject=request.POST['subject4name'],unit=request.POST['subject4Unit'],Grade=request.POST['subject4Grade'])
-                Term2.objects.create(subject=request.POST['subject5name'],unit=request.POST['subject5Unit'],Grade=request.POST['subject5Grade'])
-                Term2.objects.create(subject=request.POST['subject6name'],unit=request.POST['subject6Unit'],Grade=request.POST['subject6Grade'])
-                Term2.objects.create(subject=request.POST['subject7name'],unit=request.POST['subject7Unit'],Grade=request.POST['subject7Grade'])
-                Term2.objects.create(subject=request.POST['subject8name'],unit=request.POST['subject8Unit'],Grade=request.POST['subject8Grade'])
-                Term2.objects.create(subject=request.POST['subject9name'],unit=request.POST['subject9Unit'],Grade=request.POST['subject9Grade'])
-                GPA.objects.filter(pk=1).update(GPA_2=gpa_result)
+            # บันทึกเกรด
+            if len(Term.objects.filter(term="2")) == 0 :
+                GPA.objects.update(GPA_2=gpa_result)
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject1name'],
+                                    unit=request.POST['subject1Unit'], Grade=request.POST['subject1Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject2name'],
+                                    unit=request.POST['subject2Unit'], Grade=request.POST['subject2Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject3name'],
+                                    unit=request.POST['subject3Unit'], Grade=request.POST['subject3Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject4name'],
+                                    unit=request.POST['subject4Unit'], Grade=request.POST['subject4Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject5name'],
+                                    unit=request.POST['subject5Unit'], Grade=request.POST['subject5Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject6name'],
+                                    unit=request.POST['subject6Unit'], Grade=request.POST['subject6Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject7name'],
+                                    unit=request.POST['subject7Unit'], Grade=request.POST['subject7Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject8name'],
+                                    unit=request.POST['subject8Unit'], Grade=request.POST['subject8Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject9name'],
+                                    unit=request.POST['subject9Unit'], Grade=request.POST['subject9Grade'])
                 return render(request, 'home.html',{'result':gpa_result})
+            # แก้ไขเกรด
             else:
-                Term2.objects.filter(pk=1).update(subject=request.POST['subject1name'],unit=request.POST['subject1Unit'],Grade=request.POST['subject1Grade'])
-                Term2.objects.filter(pk=2).update(subject=request.POST['subject2name'],unit=request.POST['subject2Unit'],Grade=request.POST['subject2Grade'])
-                Term2.objects.filter(pk=3).update(subject=request.POST['subject3name'],unit=request.POST['subject3Unit'],Grade=request.POST['subject3Grade'])
-                Term2.objects.filter(pk=4).update(subject=request.POST['subject4name'],unit=request.POST['subject4Unit'],Grade=request.POST['subject4Grade'])
-                Term2.objects.filter(pk=5).update(subject=request.POST['subject5name'],unit=request.POST['subject5Unit'],Grade=request.POST['subject5Grade'])
-                Term2.objects.filter(pk=6).update(subject=request.POST['subject6name'],unit=request.POST['subject6Unit'],Grade=request.POST['subject6Grade'])
-                Term2.objects.filter(pk=7).update(subject=request.POST['subject7name'],unit=request.POST['subject7Unit'],Grade=request.POST['subject7Grade'])
-                Term2.objects.filter(pk=8).update(subject=request.POST['subject8name'],unit=request.POST['subject8Unit'],Grade=request.POST['subject8Grade'])
-                Term2.objects.filter(pk=9).update(subject=request.POST['subject9name'],unit=request.POST['subject9Unit'],Grade=request.POST['subject9Grade'])
-                GPA.objects.filter(pk=1).update(GPA_2=gpa_result)
+                Term.objects.filter(term="2").all().delete()
+                GPA.objects.update(GPA_2=gpa_result)
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject1name'],
+                                    unit=request.POST['subject1Unit'], Grade=request.POST['subject1Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject2name'],
+                                    unit=request.POST['subject2Unit'], Grade=request.POST['subject2Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject3name'],
+                                    unit=request.POST['subject3Unit'], Grade=request.POST['subject3Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject4name'],
+                                    unit=request.POST['subject4Unit'], Grade=request.POST['subject4Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject5name'],
+                                    unit=request.POST['subject5Unit'], Grade=request.POST['subject5Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject6name'],
+                                    unit=request.POST['subject6Unit'], Grade=request.POST['subject6Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject7name'],
+                                    unit=request.POST['subject7Unit'], Grade=request.POST['subject7Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject8name'],
+                                    unit=request.POST['subject8Unit'], Grade=request.POST['subject8Grade'])
+                Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject9name'],
+                                    unit=request.POST['subject9Unit'], Grade=request.POST['subject9Grade'])
                 return render(request, 'home.html',{'result':gpa_result})
 
         # ถ้าผู้ใช้เลือกเทอมที่ 3
