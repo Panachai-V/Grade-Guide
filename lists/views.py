@@ -396,6 +396,7 @@ def cal_grade(request):
             gpa_result = sum_multi_subject / sum_unit
             # บันทึกเกรด
             if len(Term.objects.filter(term="7")) == 0 :
+                GPA.objects.update(GPA_7=gpa_result)
                 Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject1name'],
                                     unit=request.POST['subject1Unit'], Grade=request.POST['subject1Grade'])
                 Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject2name'],
@@ -414,12 +415,11 @@ def cal_grade(request):
                                     unit=request.POST['subject8Unit'], Grade=request.POST['subject8Grade'])
                 Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject9name'],
                                     unit=request.POST['subject9Unit'], Grade=request.POST['subject9Grade'])
-
-                GPA.objects.filter(pk=1).update(GPA_7=gpa_result)
                 return render(request, 'home.html',{'result':gpa_result})
             # แก้ไขเกรด
             else:
                 Term.objects.filter(term="7").all().delete()
+                GPA.objects.update(GPA_7=gpa_result)
                 Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject1name'],
                                     unit=request.POST['subject1Unit'], Grade=request.POST['subject1Grade'])
                 Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject2name'],
@@ -438,7 +438,6 @@ def cal_grade(request):
                                     unit=request.POST['subject8Unit'], Grade=request.POST['subject8Grade'])
                 Term.objects.create(term=request.POST['subjectTerm'], subject=request.POST['subject9name'],
                                     unit=request.POST['subject9Unit'], Grade=request.POST['subject9Grade'])
-                GPA.objects.filter(pk=1).update(GPA_7=gpa_result)
                 return render(request, 'home.html',{'result':gpa_result})
 
 
