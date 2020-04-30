@@ -1146,9 +1146,15 @@ def seventh_term_result(request):
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 8
 def eight_term_result(request):
-    sum_gpa = 0
     data_gpa = GPA.objects.all()
+    two_dec_gpax1 = return_gpax(GPA.objects.all())
     dataterm_8 = Term.objects.filter(term="8").all()
+
+    return render(request, 'eightTerm.html', {'dataterm8':dataterm_8,'GPARES':data_gpa,'res_GPAX': two_dec_gpax1})
+
+def return_gpax(data_gpa):
+    # data_gpa = GPA.objects.all()
+    sum_gpa = 0
     countunit = 0
     for i in data_gpa:
         sum_gpa = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
@@ -1174,5 +1180,4 @@ def eight_term_result(request):
         countunit+=1
     result_gpax = float(sum_gpa) / float(countunit)
     two_dec_gpax = '%.2f' % result_gpax
-    return render(request, 'eightTerm.html', {'dataterm8':dataterm_8,'GPARES':data_gpa,'res_GPAX': two_dec_gpax})
-
+    return two_dec_gpax
