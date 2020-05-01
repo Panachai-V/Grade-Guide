@@ -1114,52 +1114,26 @@ def sixth_term_result(request):
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 7
 def seventh_term_result(request):
-    sum_gpa = 0
-    dataterm_7 = Term.objects.filter(term="7").all()
     data_gpa = GPA.objects.all()
-    countunit = 0
-    for i in data_gpa:
-        sum_gpa = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
-    if sum_gpa > 0.0:
-        for unit in data_gpa:
-            if unit.GPA_1 != '0' :
-                countunit+=1
-            if unit.GPA_2 != '0' :
-                countunit+=1
-            if unit.GPA_3 != '0' :
-                countunit+=1
-            if unit.GPA_4 != '0' :
-                countunit+=1
-            if unit.GPA_5 != '0' :
-                countunit+=1
-            if unit.GPA_6 != '0' :
-                countunit+=1
-            if unit.GPA_7 != '0' :
-                countunit+=1
-            if unit.GPA_8 != '0' :
-                countunit+=1
-    else:
-        countunit+=1
-    result_gpax = float(sum_gpa) / float(countunit)
-    two_dec_gpax = '%.2f' % result_gpax
-    return render(request, 'seventhTerm.html', {'dataterm7':dataterm_7,'GPARES':data_gpa,'res_GPAX': two_dec_gpax})
+    two_dec_gpax_result = return_gpax(data_gpa)
+    dataterm_7 = Term.objects.filter(term="7").all()
+    return render(request, 'seventhTerm.html', {'dataterm7':dataterm_7,'GPARES':data_gpa,'res_GPAX': two_dec_gpax_result})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 8
 def eight_term_result(request):
     data_gpa = GPA.objects.all()
-    two_dec_gpax1 = return_gpax(GPA.objects.all())
+    two_dec_gpax_result = return_gpax(data_gpa)
     dataterm_8 = Term.objects.filter(term="8").all()
+    return render(request, 'eightTerm.html', {'dataterm8':dataterm_8,'GPARES':data_gpa,'res_GPAX': two_dec_gpax_result})
 
-    return render(request, 'eightTerm.html', {'dataterm8':dataterm_8,'GPARES':data_gpa,'res_GPAX': two_dec_gpax1})
-
-def return_gpax(data_gpa):
-    # data_gpa = GPA.objects.all()
+# คำนวณ GPAX
+def return_gpax(data):
     sum_gpa = 0
     countunit = 0
-    for i in data_gpa:
+    for i in data:
         sum_gpa = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
     if sum_gpa > 0.0:
-        for unit in data_gpa:
+        for unit in data:
             if unit.GPA_1 != '0' :
                 countunit+=1
             if unit.GPA_2 != '0' :
