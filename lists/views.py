@@ -922,35 +922,10 @@ def graph(request):
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 1
 def first_term_result(request):
-    sum_gpa = 0
     data_gpa = GPA.objects.all()
     dataterm_1 = Term.objects.filter(term="1").all()
-    countunit = 0
-    for i in data_gpa:
-        sum_gpa = float(i.GPA_1) + float(i.GPA_2) + float(i.GPA_3) + float(i.GPA_4) + float(i.GPA_5) + float(i.GPA_6) + float(i.GPA_7) + float(i.GPA_8)
-    if sum_gpa > 0.0:
-        for unit in data_gpa:
-            if unit.GPA_1 != '0' :
-                countunit+=1
-            if unit.GPA_2 != '0' :
-                countunit+=1
-            if unit.GPA_3 != '0' :
-                countunit+=1
-            if unit.GPA_4 != '0' :
-                countunit+=1
-            if unit.GPA_5 != '0' :
-                countunit+=1
-            if unit.GPA_6 != '0' :
-                countunit+=1
-            if unit.GPA_7 != '0' :
-                countunit+=1
-            if unit.GPA_8 != '0' :
-                countunit+=1
-    else:
-        countunit+=1
-    result_gpax = float(sum_gpa) / float(countunit)
-    two_dec_gpax = '%.2f' % result_gpax
-    return render(request, 'firstTerm.html', {'dataterm1':dataterm_1,'GPARES':data_gpa,'res_GPAX': two_dec_gpax})
+    two_dec_gpax_result = return_gpax(data_gpa)
+    return render(request, 'firstTerm.html', {'dataterm1':dataterm_1,'GPARES':data_gpa,'res_GPAX': two_dec_gpax_result})
 
 # การแสดงเกรดและคำนวณ GPAX เทอมที่ 2
 def second_term_result(request):
