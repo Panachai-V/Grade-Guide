@@ -73,32 +73,32 @@ def cal_grade(request):
                  float(request.POST.get('subject7Unit')) + float(request.POST.get('subject7Grade'))+\
                  float(request.POST.get('subject8Unit')) + float(request.POST.get('subject8Grade'))+\
                  float(request.POST.get('subject9Unit')) + float(request.POST.get('subject9Grade'))
+    # คำนวณ GPA
+    multi_subject_1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
+    multi_subject_2 = float(request.POST.get('subject2Unit')) * float(request.POST.get('subject2Grade'))
+    multi_subject_3 = float(request.POST.get('subject3Unit')) * float(request.POST.get('subject3Grade'))
+    multi_subject_4 = float(request.POST.get('subject4Unit')) * float(request.POST.get('subject4Grade'))
+    multi_subject_5 = float(request.POST.get('subject5Unit')) * float(request.POST.get('subject5Grade'))
+    multi_subject_6 = float(request.POST.get('subject6Unit')) * float(request.POST.get('subject6Grade'))
+    multi_subject_7 = float(request.POST.get('subject7Unit')) * float(request.POST.get('subject7Grade'))
+    multi_subject_8 = float(request.POST.get('subject8Unit')) * float(request.POST.get('subject8Grade'))
+    multi_subject_9 = float(request.POST.get('subject9Unit')) * float(request.POST.get('subject9Grade'))
+
+    sum_unit = float(request.POST.get('subject1Unit')) + float(request.POST.get('subject2Unit')) + float(
+        request.POST.get('subject3Unit')) + float(request.POST.get('subject4Unit')) + float(
+        request.POST.get('subject5Unit')) + float(request.POST.get('subject6Unit')) + float(
+        request.POST.get('subject7Unit')) + float(request.POST.get('subject8Unit')) + float(
+        request.POST.get('subject9Unit'))
+    sum_multi_subject = multi_subject_1 + multi_subject_2 + multi_subject_3 + multi_subject_4 + multi_subject_5 + multi_subject_6 + multi_subject_7 + multi_subject_8 + multi_subject_9
+    gpa = sum_multi_subject / sum_unit
+    gpa_result = '%.2f' % gpa
+
     if len(Term.objects.all()) <= 100:
         # ถ้าผู้ใช้เลือกเทอมที่ 1
         if request.POST.get('subjectTerm') == '1':
             # ถ้าไม่ได้กรอกข้อมูลอะไรไปเลยจะแสดงผลเป็นคำว่า 'Plese check your infromation before saving.'
             if check_input == 0.0:
                 return render(request, 'home.html', {'notinput': none_input_text})
-            # คำนวณ GPA
-            multi_subject_1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
-            multi_subject_2 = float(request.POST.get('subject2Unit')) * float(request.POST.get('subject2Grade'))
-            multi_subject_3 = float(request.POST.get('subject3Unit')) * float(request.POST.get('subject3Grade'))
-            multi_subject_4 = float(request.POST.get('subject4Unit')) * float(request.POST.get('subject4Grade'))
-            multi_subject_5 = float(request.POST.get('subject5Unit')) * float(request.POST.get('subject5Grade'))
-            multi_subject_6 = float(request.POST.get('subject6Unit')) * float(request.POST.get('subject6Grade'))
-            multi_subject_7 = float(request.POST.get('subject7Unit')) * float(request.POST.get('subject7Grade'))
-            multi_subject_8 = float(request.POST.get('subject8Unit')) * float(request.POST.get('subject8Grade'))
-            multi_subject_9 = float(request.POST.get('subject9Unit')) * float(request.POST.get('subject9Grade'))
-
-            sum_unit = float(request.POST.get('subject1Unit')) + float(request.POST.get('subject2Unit')) + float(
-                request.POST.get('subject3Unit')) + float(request.POST.get('subject4Unit')) + float(
-                request.POST.get('subject5Unit')) + float(request.POST.get('subject6Unit')) + float(
-                request.POST.get('subject7Unit')) + float(request.POST.get('subject8Unit')) + float(
-                request.POST.get('subject9Unit'))
-            sum_multi_subject = multi_subject_1 + multi_subject_2 + multi_subject_3 + multi_subject_4 + multi_subject_5 + multi_subject_6 + multi_subject_7 + multi_subject_8 + multi_subject_9
-            gpa = sum_multi_subject / sum_unit
-            gpa_result = '%.2f' %gpa
-            # บันทึกเกรด
             # บันทึกเกรด
             if len(Term.objects.filter(term="1")) == 0 :
                 GPA.objects.update(GPA_1=gpa_result)
@@ -118,25 +118,6 @@ def cal_grade(request):
             # ถ้าไม่ได้กรอกข้อมูลอะไรไปเลยจะแสดงผลเป็นคำว่า 'Plese check your infromation before saving.'
             if check_input == 0.0:
                 return render(request, 'home.html', {'notinput': none_input_text})
-            # คำนวณ GPA
-            multi_subject_1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
-            multi_subject_2 = float(request.POST.get('subject2Unit')) * float(request.POST.get('subject2Grade'))
-            multi_subject_3 = float(request.POST.get('subject3Unit')) * float(request.POST.get('subject3Grade'))
-            multi_subject_4 = float(request.POST.get('subject4Unit')) * float(request.POST.get('subject4Grade'))
-            multi_subject_5 = float(request.POST.get('subject5Unit')) * float(request.POST.get('subject5Grade'))
-            multi_subject_6 = float(request.POST.get('subject6Unit')) * float(request.POST.get('subject6Grade'))
-            multi_subject_7 = float(request.POST.get('subject7Unit')) * float(request.POST.get('subject7Grade'))
-            multi_subject_8 = float(request.POST.get('subject8Unit')) * float(request.POST.get('subject8Grade'))
-            multi_subject_9 = float(request.POST.get('subject9Unit')) * float(request.POST.get('subject9Grade'))
-
-            sum_unit = float(request.POST.get('subject1Unit')) + float(request.POST.get('subject2Unit')) + float(
-                request.POST.get('subject3Unit')) + float(request.POST.get('subject4Unit')) + float(
-                request.POST.get('subject5Unit')) + float(request.POST.get('subject6Unit')) + float(
-                request.POST.get('subject7Unit')) + float(request.POST.get('subject8Unit')) + float(
-                request.POST.get('subject9Unit'))
-            sum_multi_subject = multi_subject_1 + multi_subject_2 + multi_subject_3 + multi_subject_4 + multi_subject_5 + multi_subject_6 + multi_subject_7 + multi_subject_8 + multi_subject_9
-            gpa = sum_multi_subject / sum_unit
-            gpa_result = '%.2f' %gpa
             # บันทึกเกรด
             if len(Term.objects.filter(term="2")) == 0 :
                 GPA.objects.update(GPA_2=gpa_result)
@@ -156,25 +137,6 @@ def cal_grade(request):
             # ถ้าไม่ได้กรอกข้อมูลอะไรไปเลยจะแสดงผลเป็นคำว่า 'Plese check your infromation before saving.'
             if check_input == 0.0:
                 return render(request, 'home.html', {'notinput': none_input_text})
-            # คำนวณ GPA
-            multi_subject_1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
-            multi_subject_2 = float(request.POST.get('subject2Unit')) * float(request.POST.get('subject2Grade'))
-            multi_subject_3 = float(request.POST.get('subject3Unit')) * float(request.POST.get('subject3Grade'))
-            multi_subject_4 = float(request.POST.get('subject4Unit')) * float(request.POST.get('subject4Grade'))
-            multi_subject_5 = float(request.POST.get('subject5Unit')) * float(request.POST.get('subject5Grade'))
-            multi_subject_6 = float(request.POST.get('subject6Unit')) * float(request.POST.get('subject6Grade'))
-            multi_subject_7 = float(request.POST.get('subject7Unit')) * float(request.POST.get('subject7Grade'))
-            multi_subject_8 = float(request.POST.get('subject8Unit')) * float(request.POST.get('subject8Grade'))
-            multi_subject_9 = float(request.POST.get('subject9Unit')) * float(request.POST.get('subject9Grade'))
-
-            sum_unit = float(request.POST.get('subject1Unit')) + float(request.POST.get('subject2Unit')) + float(
-                request.POST.get('subject3Unit')) + float(request.POST.get('subject4Unit')) + float(
-                request.POST.get('subject5Unit')) + float(request.POST.get('subject6Unit')) + float(
-                request.POST.get('subject7Unit')) + float(request.POST.get('subject8Unit')) + float(
-                request.POST.get('subject9Unit'))
-            sum_multi_subject = multi_subject_1 + multi_subject_2 + multi_subject_3 + multi_subject_4 + multi_subject_5 + multi_subject_6 + multi_subject_7 + multi_subject_8 +multi_subject_9
-            gpa = sum_multi_subject / sum_unit
-            gpa_result = '%.2f' %gpa
             # บันทึกเกรด
             if len(Term.objects.filter(term="3")) == 0 :
                 GPA.objects.update(GPA_3=gpa_result)
@@ -194,24 +156,6 @@ def cal_grade(request):
             # ถ้าไม่ได้กรอกข้อมูลอะไรไปเลยจะแสดงผลเป็นคำว่า 'Plese check your infromation before saving.'
             if check_input == 0.0:
                 return render(request, 'home.html', {'notinput': none_input_text})
-            # คำนวณ GPA
-            multi_subject_1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
-            multi_subject_2 = float(request.POST.get('subject2Unit')) * float(request.POST.get('subject2Grade'))
-            multi_subject_3 = float(request.POST.get('subject3Unit')) * float(request.POST.get('subject3Grade'))
-            multi_subject_4 = float(request.POST.get('subject4Unit')) * float(request.POST.get('subject4Grade'))
-            multi_subject_5 = float(request.POST.get('subject5Unit')) * float(request.POST.get('subject5Grade'))
-            multi_subject_6 = float(request.POST.get('subject6Unit')) * float(request.POST.get('subject6Grade'))
-            multi_subject_7 = float(request.POST.get('subject7Unit')) * float(request.POST.get('subject7Grade'))
-            multi_subject_8 = float(request.POST.get('subject8Unit')) * float(request.POST.get('subject8Grade'))
-            multi_subject_9 = float(request.POST.get('subject9Unit')) * float(request.POST.get('subject9Grade'))
-            sum_unit = float(request.POST.get('subject1Unit')) + float(request.POST.get('subject2Unit')) + float(
-                request.POST.get('subject3Unit')) + float(request.POST.get('subject4Unit')) + float(
-                request.POST.get('subject5Unit')) + float(request.POST.get('subject6Unit')) + float(
-                request.POST.get('subject7Unit')) + float(request.POST.get('subject8Unit')) + float(
-                request.POST.get('subject9Unit'))
-            sum_multi_subject = multi_subject_1 + multi_subject_2 + multi_subject_3 + multi_subject_4 + multi_subject_5 + multi_subject_6 + multi_subject_7 + multi_subject_8 +multi_subject_9
-            gpa = sum_multi_subject / sum_unit
-            gpa_result = '%.2f' %gpa
             # บันทึกเกรด
             if len(Term.objects.filter(term="4")) == 0 :
                 GPA.objects.update(GPA_4=gpa_result)
@@ -231,26 +175,6 @@ def cal_grade(request):
             # ถ้าไม่ได้กรอกข้อมูลอะไรไปเลยจะแสดงผลเป็นคำว่า 'Plese check your infromation before saving.'
             if check_input == 0.0:
                 return render(request, 'home.html', {'notinput': none_input_text})
-            # คำนวณ GPA
-            multi_subject_1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
-            multi_subject_2 = float(request.POST.get('subject2Unit')) * float(request.POST.get('subject2Grade'))
-            multi_subject_3 = float(request.POST.get('subject3Unit')) * float(request.POST.get('subject3Grade'))
-            multi_subject_4 = float(request.POST.get('subject4Unit')) * float(request.POST.get('subject4Grade'))
-            multi_subject_5 = float(request.POST.get('subject5Unit')) * float(request.POST.get('subject5Grade'))
-            multi_subject_6 = float(request.POST.get('subject6Unit')) * float(request.POST.get('subject6Grade'))
-            multi_subject_7 = float(request.POST.get('subject7Unit')) * float(request.POST.get('subject7Grade'))
-            multi_subject_8 = float(request.POST.get('subject8Unit')) * float(request.POST.get('subject8Grade'))
-            multi_subject_9 = float(request.POST.get('subject9Unit')) * float(request.POST.get('subject9Grade'))
-
-            sum_unit = float(request.POST.get('subject1Unit')) + float(request.POST.get('subject2Unit')) + float(
-                request.POST.get('subject3Unit')) + float(request.POST.get('subject4Unit')) + float(
-                request.POST.get('subject5Unit')) + float(request.POST.get('subject6Unit')) + float(
-                request.POST.get('subject7Unit')) + float(request.POST.get('subject8Unit')) + float(
-                request.POST.get('subject9Unit')
-            )
-            sum_multi_subject = multi_subject_1 + multi_subject_2 + multi_subject_3 + multi_subject_4 + multi_subject_5 + multi_subject_6 + multi_subject_7 + multi_subject_8 +multi_subject_9
-            gpa = sum_multi_subject / sum_unit
-            gpa_result = '%.2f' %gpa
             # บันทึกเกรด
             if len(Term.objects.filter(term="5")) == 0 :
                 GPA.objects.update(GPA_5=gpa_result)
@@ -270,25 +194,6 @@ def cal_grade(request):
             # ถ้าไม่ได้กรอกข้อมูลอะไรไปเลยจะแสดงผลเป็นคำว่า 'Plese check your infromation before saving.'
             if check_input == 0.0:
                 return render(request, 'home.html', {'notinput': none_input_text})
-            # คำนวณ GPA
-            multi_subject_1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
-            multi_subject_2 = float(request.POST.get('subject2Unit')) * float(request.POST.get('subject2Grade'))
-            multi_subject_3 = float(request.POST.get('subject3Unit')) * float(request.POST.get('subject3Grade'))
-            multi_subject_4 = float(request.POST.get('subject4Unit')) * float(request.POST.get('subject4Grade'))
-            multi_subject_5 = float(request.POST.get('subject5Unit')) * float(request.POST.get('subject5Grade'))
-            multi_subject_6 = float(request.POST.get('subject6Unit')) * float(request.POST.get('subject6Grade'))
-            multi_subject_7 = float(request.POST.get('subject7Unit')) * float(request.POST.get('subject7Grade'))
-            multi_subject_8 = float(request.POST.get('subject8Unit')) * float(request.POST.get('subject8Grade'))
-            multi_subject_9 = float(request.POST.get('subject9Unit')) * float(request.POST.get('subject9Grade'))
-
-            sum_unit = float(request.POST.get('subject1Unit')) + float(request.POST.get('subject2Unit')) + float(
-                request.POST.get('subject3Unit')) + float(request.POST.get('subject4Unit')) + float(
-                request.POST.get('subject5Unit')) + float(request.POST.get('subject6Unit')) + float(
-                request.POST.get('subject7Unit')) + float(request.POST.get('subject8Unit')) + float(
-                request.POST.get('subject9Unit'))
-            sum_multi_subject = multi_subject_1 + multi_subject_2 + multi_subject_3 + multi_subject_4 + multi_subject_5 + multi_subject_6 + multi_subject_7 + multi_subject_8 +multi_subject_9
-            gpa = sum_multi_subject / sum_unit
-            gpa_result = '%.2f' %gpa
             # บันทึกเกรด
             if len(Term.objects.filter(term="6")) == 0 :
                 GPA.objects.update(GPA_6=gpa_result)
@@ -308,25 +213,6 @@ def cal_grade(request):
             # ถ้าไม่ได้กรอกข้อมูลอะไรไปเลยจะแสดงผลเป็นคำว่า 'Plese check your infromation before saving.'
             if check_input == 0.0:
                 return render(request, 'home.html', {'notinput': none_input_text})
-            # คำนวณ GPA
-            multi_subject_1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
-            multi_subject_2 = float(request.POST.get('subject2Unit')) * float(request.POST.get('subject2Grade'))
-            multi_subject_3 = float(request.POST.get('subject3Unit')) * float(request.POST.get('subject3Grade'))
-            multi_subject_4 = float(request.POST.get('subject4Unit')) * float(request.POST.get('subject4Grade'))
-            multi_subject_5 = float(request.POST.get('subject5Unit')) * float(request.POST.get('subject5Grade'))
-            multi_subject_6 = float(request.POST.get('subject6Unit')) * float(request.POST.get('subject6Grade'))
-            multi_subject_7 = float(request.POST.get('subject7Unit')) * float(request.POST.get('subject7Grade'))
-            multi_subject_8 = float(request.POST.get('subject8Unit')) * float(request.POST.get('subject8Grade'))
-            multi_subject_9 = float(request.POST.get('subject9Unit')) * float(request.POST.get('subject9Grade'))
-
-            sum_unit = float(request.POST.get('subject1Unit')) + float(request.POST.get('subject2Unit')) + float(
-                request.POST.get('subject3Unit')) + float(request.POST.get('subject4Unit')) + float(
-                request.POST.get('subject5Unit')) + float(request.POST.get('subject6Unit')) + float(
-                request.POST.get('subject7Unit')) + float(request.POST.get('subject8Unit')) + float(
-                request.POST.get('subject9Unit'))
-            sum_multi_subject = multi_subject_1 + multi_subject_2 + multi_subject_3 + multi_subject_4 + multi_subject_5 + multi_subject_6 + multi_subject_7 + multi_subject_8 +multi_subject_9
-            gpa = sum_multi_subject / sum_unit
-            gpa_result = '%.2f' %gpa
             # บันทึกเกรด
             if len(Term.objects.filter(term="7")) == 0 :
                 GPA.objects.update(GPA_7=gpa_result)
@@ -341,32 +227,11 @@ def cal_grade(request):
                 save_grade(request,term_data)
                 return render(request, 'home.html',{'result':gpa_result})
 
-
         # ถ้าผู้ใช้เลือกเทอมที่ 8
         if request.POST.get('subjectTerm') == '8':
             # ถ้าไม่ได้กรอกข้อมูลอะไรไปเลยจะแสดงผลเป็นคำว่า 'Plese check your infromation before saving.'
             if check_input == 0.0:
                 return render(request, 'home.html', {'notinput': none_input_text})
-            # คำนวณ GPA
-            multi_subject_1 = float(request.POST.get('subject1Unit')) * float(request.POST.get('subject1Grade'))
-            multi_subject_2 = float(request.POST.get('subject2Unit')) * float(request.POST.get('subject2Grade'))
-            multi_subject_3 = float(request.POST.get('subject3Unit')) * float(request.POST.get('subject3Grade'))
-            multi_subject_4 = float(request.POST.get('subject4Unit')) * float(request.POST.get('subject4Grade'))
-            multi_subject_5 = float(request.POST.get('subject5Unit')) * float(request.POST.get('subject5Grade'))
-            multi_subject_6 = float(request.POST.get('subject6Unit')) * float(request.POST.get('subject6Grade'))
-            multi_subject_7 = float(request.POST.get('subject7Unit')) * float(request.POST.get('subject7Grade'))
-            multi_subject_8 = float(request.POST.get('subject8Unit')) * float(request.POST.get('subject8Grade'))
-            multi_subject_9 = float(request.POST.get('subject9Unit')) * float(request.POST.get('subject9Grade'))
-
-            sum_unit = float(request.POST.get('subject1Unit')) + float(request.POST.get('subject2Unit')) + float(
-                request.POST.get('subject3Unit')) + float(request.POST.get('subject4Unit')) + float(
-                request.POST.get('subject5Unit')) + float(request.POST.get('subject6Unit')) + float(
-                request.POST.get('subject7Unit')) + float(request.POST.get('subject8Unit')) + float(
-                request.POST.get('subject9Unit'))
-            sum_multi_subject = multi_subject_1 + multi_subject_2 + multi_subject_3 + multi_subject_4 + multi_subject_5 + multi_subject_6 + multi_subject_7 + multi_subject_8 +multi_subject_9
-            gpa = sum_multi_subject / sum_unit
-            gpa_result = '%.2f' %gpa
-
             # บันทึกเกรด
             if len(Term.objects.filter(term="8")) == 0 :
                 GPA.objects.update(GPA_8=gpa_result)
